@@ -25,7 +25,7 @@ Note, this tool uses the following libraries via CDN (you can localize it if you
 
 To get started, follow the steps below: 
 1. Create your database and connect it via **dcb-onfig.php**
-2. Import **barangayTransaction.sql** to your database
+2. Import **btms7.sql** to your database
 3. Test login - the default username & password is **_admin_**
 
-**Note:** Table and data generated via _migrations.sql_ is for testing purposes only, please change it with your actual DB Structure.
+**Note:** Table and data generated via _btms7.sql_ is for testing purposes only, please change it with your actual DB Structure.
