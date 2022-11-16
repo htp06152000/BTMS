@@ -1,0 +1,78 @@
+/*--------------------------------------------------------------
+#    Dashboard Layout
+--------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    /* margin-left: -300px; */
+    background-color: rgb(61, 63, 194);
+    transition: 0.5s;
+} 
+
+.nav-link {
+    font-size: 17px;
+    margin-bottom: 6px;
+    font-family: 'Poppins';
+    transition: 0.3s;
+}
+
+.nav-link:active,
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:visited {
+    background-color: #ffffff26;
+    width: 110vh;
+    transform: scale(1.05);
+}
+
+#page-content-wrapper {
+    margin-left: 15rem;
+    margin-right: 3rem;
+    overflow-x: hidden;
+}
+
+.dropdown-menu {
+    background-color: rgb(61, 63, 194);
+}
+
+.dropdown-item:active,
+.dropdown-item:focus,
+.dropdown-item:hover {
+    background-color: #ffffff26;
+}
+
+.nav-items a::after {
+    content: ''; 
+    width: 0;
+    height: 1px;
+    background-color: rgb(248, 252, 25);
+    display: block;
+}
+
+.nav-items a:hover::after,
+.nav-items a:active::after,
+.nav-items a:focus::after,
+.nav-items a:visited::after {
+    width: 180px;
+    transition: width 0.3s linear;
+    background-color: rgb(248, 252, 25);
+}
+
+.heading {
+    font-family: 'Poppins';
+}
+
