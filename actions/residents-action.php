@@ -2,7 +2,6 @@
 
 	if ( isset($_POST['update-residents']) ) {
         
-        $user_id = $_SESSION["user_info"]["id"];
         $residentFName = sanitize_input( $_POST['residentFName'] );
         $residentMName = sanitize_input( $_POST['residentMName'] );
         $residentLName = sanitize_input( $_POST['residentLName'] );
@@ -10,12 +9,16 @@
         $residentCivilStatus = sanitize_input( $_POST['residentCivilStatus'] );
         $residentGender = sanitize_input( $_POST['residentGender'] );
         $residentZoneNumber = sanitize_input( $_POST['residentZoneNumber'] );
+        $residentID = sanitize_input( $_POST['residentID']);
 
-        $update_residents = $DB->prepare("UPDATE resident SET residentFName = ?, residentMName = ?, residentLName = ?, residentAge = ?, residentCivilStatus = ?, residentGender = ?, residentZoneNumber = ?, WHERE user_id = ?");
+        $user_id = sanitize_input($_POST['user_id']);
+
+
+        $update_residents = $DB->prepare("UPDATE resident SET residentFName = ?, residentMName = ?, residentLName = ?, residentAge = ?, residentCivilStatus = ?, residentGender = ?, residentZoneNumber = ?, residentID = ?, WHERE user_id = ?");
 
         try {
             $DB->beginTransaction();
-            if( $update_residents->execute( [$residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber, $user_id ] ) ) {
+            if( $update_residents->execute( [$residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber, $residentID, $user_id ] ) ) {
                 $DB->commit();
                 $_SESSION['message'] = "Resident successfully updated";
                 $_SESSION['messagetype'] = "success";
@@ -46,11 +49,11 @@
         $residentGender = sanitize_input( $_POST['residentGender'] );
         $residentZoneNumber = sanitize_input( $_POST['residentZoneNumber'] );
 
-        $update_residents = $DB->prepare("INSERT INTO resident ( user_id, residentFName, residentMName, residentLName, residentAge, residentCivilStatus, residentGender, residentZoneNumber ) VALUES (?, ?, ?, ?, ?, ?, ?, ? )");
+        $update_residents = $DB->prepare("INSERT INTO resident ( user_id, residentFName, residentMName, residentLName, residentAge, residentCivilStatus, residentGender, residentZoneNumber) VALUES (?, ?, ?, ?, ?, ?, ?, ? )");
 
         try {
             $DB->beginTransaction();
-            if( $update_residents->execute( [$user_id, $residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber] ) ) {
+            if( $update_residents->execute( [$user_id, $residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber,] ) ) {
                 $DB->commit();
                 $_SESSION['message'] = "User successfully added";
                 $_SESSION['messagetype'] = "success";

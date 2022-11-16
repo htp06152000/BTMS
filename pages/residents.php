@@ -1,7 +1,7 @@
 <?php if (isset($_GET['edit']) ) : ?>
 
 
-<?php $get_residents = $DB->prepare("SELECT * FROM resident WHERE user_id = ? LIMIT 0, 1");
+<?php $get_residents = $DB->prepare("SELECT * FROM resident WHERE residentID = ? LIMIT 0, 1");
 $get_residents->execute([ $_GET['edit'] ]);  ?>
 
 <?php if ($get_residents && $get_residents->rowCount() > 0) :
@@ -57,7 +57,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
         <div class="col-12">
             <hr class="hr" />
             <a href="<?=root_url('residents')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
-            <input type="hidden" name="user_id" value="<?=$residents['user_id']?>" class="d-none">
+            <input type="hidden" name="residentID" value="<?=$residents['residentID']?>" class="d-none">
             <button type="submit" name="update-residents" class="btn btn-primary rounded-50px px-4">Update</button>
         </div>
     </form>
@@ -109,7 +109,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
                         <tbody>
                             <?php $resident = $DB->query("SELECT * FROM resident ORDER BY residentFName ASC");
                                 foreach ($resident as $residents) : ?>
-                                    <tr>
+                                    <tr class="table-sm">
                                         <td><?=$residents["residentFName"] ?></td>
                                         <td><?=$residents["residentMName"] ?></td>
                                         <td><?=$residents["residentLName"] ?></td>
@@ -118,10 +118,10 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
                                         <td><?=$residents["residentGender"] ?></td>
                                         <td><?=$residents["residentZoneNumber"] ?></td>
                                         <td>
-                                            <a href="<?=root_url('residents')?>?edit=<?=$residents['user_id']?>" class="btn btn-primary">
+                                            <a href="<?=root_url('residents')?>?edit=<?=$residents['residentID']?>" class="btn btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="#delete-item" class="btn btn-danger" data-toggle="modal" data-itemid=<?=$residents['user_id']?>>
+                                            <a href="#delete-items" class="btn btn-danger" data-toggle="modal" data-itemid=<?=$residents['residentID']?>>
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
@@ -188,7 +188,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
     </div>
 </form>
 
-<div class="modal fade has-itemid" id="delete-item">
+<div class="modal fade has-itemid" id="delete-items">
     <div class="modal-dialog animate__animated animate__bounceInDown">
         <div class="modal-content">
             <div class="modal-header">
@@ -200,7 +200,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
             </div>
             <div class="modal-footer">
                 <form method="POST">
-                    <input type="hidden" name="itemid" class="d-none" value="0" />
+                    <input type="hidden" name="itemsid" class="d-none" value="0" />
                     <button type="submit" name="delete-residents" class="btn btn-primary">Confirm</button>
                 </form>
             </div>
