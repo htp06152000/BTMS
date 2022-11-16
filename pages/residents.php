@@ -1,7 +1,7 @@
 <?php if (isset($_GET['edit']) ) : ?>
 
 
-<?php $get_residents = $DB->prepare("SELECT * FROM resident WHERE residentID = ? LIMIT 0, 1");
+<?php $get_residents = $DB->prepare("SELECT * FROM resident WHERE user_id = ? LIMIT 0, 1");
 $get_residents->execute([ $_GET['edit'] ]);  ?>
 
 <?php if ($get_residents && $get_residents->rowCount() > 0) :
@@ -56,9 +56,9 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
 
         <div class="col-12">
             <hr class="hr" />
-            <a href="<?=root_url('resident')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
-            <input type="hidden" name="residentID" value="<?=$residents['residentID']?>" class="d-none">
-            <button type="submit" name="update-resident" class="btn btn-primary rounded-50px px-4">Update</button>
+            <a href="<?=root_url('residents')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
+            <input type="hidden" name="user_id" value="<?=$residents['user_id']?>" class="d-none">
+            <button type="submit" name="update-residents" class="btn btn-primary rounded-50px px-4">Update</button>
         </div>
     </form>
 <?php else : ?>
@@ -118,10 +118,10 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
                                         <td><?=$residents["residentGender"] ?></td>
                                         <td><?=$residents["residentZoneNumber"] ?></td>
                                         <td>
-                                            <a href="<?=root_url('residents')?>?edit=<?=$residents['residentsID']?>" class="btn btn-primary">
+                                            <a href="<?=root_url('residents')?>?edit=<?=$residents['user_id']?>" class="btn btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="#delete-item" class="btn btn-danger" data-toggle="modal" data-itemid=<?=$residents['residentsID']?>>
+                                            <a href="#delete-item" class="btn btn-danger" data-toggle="modal" data-itemid=<?=$residents['user_id']?>>
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
@@ -181,7 +181,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
         <!-- Modal footer -->
         <div class="modal-footer">
             <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" name="add-resident">Submit</button>
+            <button type="submit" class="btn btn-primary" name="add-residents">Submit</button>
         </div>
 
         </div>
@@ -200,8 +200,8 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
             </div>
             <div class="modal-footer">
                 <form method="POST">
-                    <input type="hidden" name="itemsid" class="d-none" value="0" />
-                    <button type="submit" name="delete-resident" class="btn btn-primary">Confirm</button>
+                    <input type="hidden" name="itemid" class="d-none" value="0" />
+                    <button type="submit" name="delete-residents" class="btn btn-primary">Confirm</button>
                 </form>
             </div>
         </div>
