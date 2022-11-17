@@ -14,7 +14,7 @@
         $user_id = sanitize_input($_POST['user_id']);
 
 
-        $update_residents = $DB->prepare("UPDATE resident SET residentFName = ?, residentMName = ?, residentLName = ?, residentAge = ?, residentCivilStatus = ?, residentGender = ?, residentZoneNumber = ?, residentID = ?, WHERE user_id = ?");
+        $update_residents = $DB->prepare("UPDATE resident SET residentFName = ?, residentMName = ?, residentLName = ?, residentAge = ?, residentCivilStatus = ?, residentGender = ?, residentZoneNumber = ?, residentID = ? WHERE user_id = ?");
 
         try {
             $DB->beginTransaction();
@@ -74,8 +74,8 @@
 
 
     if ( isset($_POST['delete-residents']) ) {
-        $user_id = $_SESSION["user_info"]["id"];
-        $user_id  = sanitize_input( $_POST['itemsid'] );
+        
+        $user_id  = sanitize_input( $_POST['itemid'] );
 
         $delete_residents = $DB->prepare("DELETE FROM resident WHERE user_id = ?");
 

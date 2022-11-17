@@ -176,6 +176,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
                 <label for="residentZoneNumber" class="text-muted font-weight-bold">Zone #:</label>
                 <input type="text" name="residentZoneNumber" id="residentZoneNumber" class="form-control" maxlength="25" required />
             </div>
+        </div>
 
 
         <!-- Modal footer -->
@@ -200,7 +201,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
             </div>
             <div class="modal-footer">
                 <form method="POST">
-                    <input type="hidden" name="itemsid" class="d-none" value="0" />
+                    <input type="hidden" name="itemid" class="d-none" value="0" />
                     <button type="submit" name="delete-residents" class="btn btn-primary">Confirm</button>
                 </form>
             </div>
