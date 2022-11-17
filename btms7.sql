@@ -16,7 +16,7 @@ CREATE TABLE users (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `users` (`username`, `password`, `role`, `first_name`, `last_name`, `email`, `address`)
-VALUES ('admin', 'admin', 'ADMINISTRATOR', 'System', 'Administrator', 'email@domai.com', 'Capital City, Iloilo, Philippines 5000');
+VALUES ('admin', '21232f297a57a5a743894a0e4a801fc3', 'ADMINISTRATOR', 'System', 'Administrator', 'email@domai.com', 'Capital City, Iloilo, Philippines 5000');
 
 
 
@@ -27,10 +27,13 @@ CREATE TABLE resident (
     residentFName varchar(30) NOT NULL,
     residentMName varchar(30) NOT NULL,
     residentLName varchar(30) NOT NULL,
+    residentBdate date NOT NULL,
     residentAge int NOT NULL,
     residentCivilStatus varchar(15) NOT NULL,
     residentGender varchar(15) NOT NULL,
     residentZoneNumber int(2) NOT NULL,
+    residentContactNumber bigint (11) NOT NULL,
+    residentOccupation varchar(15) NOT NULL,
     primary key (residentID),
     foreign key (user_id) references users(user_id))ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

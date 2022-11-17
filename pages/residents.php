@@ -53,7 +53,24 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
                 <input type="text" name="residentZoneNumber" id="residentZoneNumber" class="form-control" value="<?=$residents['residentZoneNumber']?>" maxlength="10" required />
             </div>
         </div>
-
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label for="residentBdate">Year of birth: <span class="text-danger">*</span></label>
+                <input type="date" name="residentBdate" id="residentBdate" class="form-control" placeholder="mm/dd/yyyy" value="<?=$residents['residentBdate']?>"required />
+            </div>
+        </div>        
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label for="residentContactNumber">Contact Number: <span class="text-danger">*</span></label>
+                <input type="text" name="residentContactNumber" id="residentContactNumber" class="form-control" value="<?=$residents['residentContactNumber']?>" maxlength="10" required />
+            </div>
+        </div>        
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label for="residentOccupation">Occupation: <span class="text-danger">*</span></label>
+                <input type="text" name="residentOccupation" id="residentOccupation" class="form-control" value="<?=$residents['residentOccupation']?>" maxlength="30" required />
+            </div>
+        </div>
         <div class="col-12">
             <hr class="hr" />
             <a href="<?=root_url('residents')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
@@ -65,6 +82,62 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
     <?php error_404(); ?>
 <?php endif; ?>
 <?php else : ?>
+
+<!-- View Modal -->
+<?php if (isset($_GET['view']) ) : ?>
+
+
+<?php $get_residents = $DB->prepare("SELECT * FROM resident WHERE residentID = ? LIMIT 0, 1");
+$get_residents->execute([ $_GET['view'] ]);  ?>
+
+<?php if ($get_residents && $get_residents->rowCount() > 0) :
+        $residents = $get_residents->fetch(); ?>
+<form class="row py-5">
+    <div class="col-12">
+        <h2 class="h2 text-primary">Residents Info</h2>
+        <hr class="hr" />
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">First Name: <span><?=$residents["residentFName"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Middle Name: <span><?=$residents["residentMName"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Last Name: <span><?=$residents["residentLName"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Age: <span><?=$residents["residentAge"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Gender: <span><?=$residents["residentGender"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Occupation: <span><?=$residents["residentOccupation"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Civil Status: <span><?=$residents["residentCivilStatus"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Contact #: <span><?=$residents["residentContactNumber"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Zone Number: <span><?=$residents["residentZoneNumber"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Year Of Birth: <span><?=$residents["residentBdate"] ?></span></p>
+    </div>
+    <div class="col-12">
+            <hr class="hr" />
+            <a href="<?=root_url('residents')?>" class="btn btn-secondary text-light rounded-50px px-4">Close</a>
+            <button class="btn btn-success text-light rounded-50px px-4">Generate</button>
+    </div>
+</form>
+<?php else : ?>
+    <?php error_404(); ?>
+<?php endif; ?>
+<?php else : ?>
+<?php endif; ?>
 
 <div class="row py-3">
     <form method="POST" class="col-lg-7">
@@ -95,7 +168,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
-                            <tr>
+                            <tr class="table-sm">
                                 <th>First name</th>
                                 <th>Middle name</th>
                                 <th>Last name</th>
@@ -118,6 +191,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
                                         <td><?=$residents["residentGender"] ?></td>
                                         <td><?=$residents["residentZoneNumber"] ?></td>
                                         <td>
+                                            <a href="<?=root_url('residents')?>?view=<?=$residents['residentID']?>" class="btn btn-warning"><i class="fas fa-eye"></i></a>
                                             <a href="<?=root_url('residents')?>?edit=<?=$residents['residentID']?>" class="btn btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
@@ -176,6 +250,19 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
                 <label for="residentZoneNumber" class="text-muted font-weight-bold">Zone #:</label>
                 <input type="text" name="residentZoneNumber" id="residentZoneNumber" class="form-control" maxlength="25" required />
             </div>
+            <div class="form-group">
+                <label for="residentBdate" class="text-muted font-weight-bold">Year of Birth:</label>
+                <input type="date" name="residentBdate" id="residentBdate" placeholder="mm/dd/yyyy" class="form-control" maxlength="25" required />
+            </div>
+            <div class="form-group">
+                <label for="residentContactNumber" class="text-muted font-weight-bold">Contact Number:</label>
+                <input type="text" name="residentContactNumber" id="residentContactNumber" class="form-control" maxlength="25" required />
+            </div>
+            <div class="form-group">
+                <label for="residentOccupation" class="text-muted font-weight-bold">Occupation:</label>
+                <input type="text" name="residentOccupation" id="residentOccupation" class="form-control" maxlength="25" required />
+            </div>
+            
         </div>
 
 
@@ -184,11 +271,11 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
             <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary" name="add-residents">Submit</button>
         </div>
-
         </div>
     </div>
 </form>
 
+<!-- Modal delete Item -->
 <div class="modal fade has-itemid" id="delete-items">
     <div class="modal-dialog animate__animated animate__bounceInDown">
         <div class="modal-content">
@@ -210,6 +297,4 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
 </div>
 
 <?php endif; ?>
-
-
 
