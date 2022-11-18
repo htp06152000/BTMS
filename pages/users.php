@@ -62,26 +62,69 @@ $get_user->execute([ $_GET['edit'] ]);  ?>
 <?php endif; ?>
 <?php else : ?>
 
+<!-- View Modal -->
+<?php if (isset($_GET['view']) ) : ?>
+
+
+<?php $get_user = $DB->prepare("SELECT * FROM users WHERE user_id = ? LIMIT 0, 1");
+$get_user->execute([ $_GET['view'] ]);  ?>
+
+<?php if ($get_user && $get_user->rowCount() > 0) :
+        $user = $get_user->fetch(); ?>
+<form class="row py-5">
+    <div class="col-12">
+        <h2 class="h2 text-primary">Users Info</h2>
+        <hr class="hr" />
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">First Name: <span><?=$user["first_name"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Middle Name: <span><?=$user["middle_name"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Last Name: <span><?=$user["last_name"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Email: <span><?=$user["email"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Address: <span><?=$user["address"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Role: <span><?=$user["role"] ?></span></p>
+    </div>
+    <div class="col-12">
+            <hr class="hr" />
+            <a href="<?=root_url('users')?>" class="btn btn-secondary text-light rounded-50px px-4">Close</a>
+    </div>
+</form>
+<?php else : ?>
+    <?php error_404(); ?>
+<?php endif; ?>
+<?php else : ?>
+<?php endif; ?>
+
 <div class="row py-3">
-    <form method="POST" class="col-lg-7">
+    <form method="POST" class="col-lg-3">
         <div class="form-group">
             <div class="input-group">
-                <input type="search" name="s" id="search" class="form-control rounded-20px" placeholder="Search" />
+                <input type="search" name="s" id="search" class="form-control rounded-50px" placeholder="Search" />
                 <div class="input-group-append">
-                    <button type="submit" class="input-group-text rounded-20px bg-primary text-white px-3">
+                    <button type="submit" class="input-group-text rounded-50px bg-primary text-white px-3">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
             </div>
         </div>
     </form>
-    <div class="col-lg-5">
+    <div class="col-lg-9">
         <button class="btn btn-primary rounded-50px float-right px-5" data-toggle="modal" data-target="#add-modal">Add</button>
     </div>
 </div>
 <div class="row py-3">
     <div class="col-12">
-        <div class="card rounded-20px">
+        <div class="card rounded-10px">
             <div class="card-header bg-primary">
                 <h6 class="card-text h4 text-light">
                     Users
@@ -101,11 +144,12 @@ $get_user->execute([ $_GET['edit'] ]);  ?>
                         <tbody>
                             <?php $users = $DB->query("SELECT * FROM users ORDER BY first_name ASC");
                                 foreach ($users as $user) : ?>
-                                    <tr>
+                                    <tr class="table-sm">
                                         <td><?=$user["first_name"] ?></td>
                                         <td><?=$user["last_name"] ?></td>
                                         <td><?=$user["email"] ?></td>
                                         <td>
+                                        <a href="<?=root_url('users')?>?view=<?=$user['user_id']?>" class="btn btn-warning"><i class="fas fa-eye"></i></a>
                                             <a href="<?=root_url('users')?>?edit=<?=$user['user_id']?>" class="btn btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>

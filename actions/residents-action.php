@@ -2,6 +2,7 @@
 
 	if ( isset($_POST['update-residents']) ) {
         
+        $user_id = $_SESSION["user_info"]["id"];
         $residentFName = sanitize_input( $_POST['residentFName'] );
         $residentMName = sanitize_input( $_POST['residentMName'] );
         $residentLName = sanitize_input( $_POST['residentLName'] );
@@ -13,15 +14,13 @@
         $residentBdate = sanitize_input($_POST['residentBdate'] );
         $residentContactNumber = sanitize_input($_POST['residentContactNumber'] ); 
         $residentOccupation = sanitize_input($_POST['residentOccupation'] );
-
-        $user_id = sanitize_input($_POST['user_id']);
-
+        $user_id = sanitize_input( $_POST['user_id'] );
 
         $update_residents = $DB->prepare("UPDATE resident SET residentFName = ?, residentMName = ?, residentLName = ?, residentAge = ?, residentCivilStatus = ?, residentGender = ?, residentZoneNumber = ?, residentBdate = ?, residentContactNumber = ?, residentOccupation = ?, residentID = ? WHERE user_id = ?");
 
         try {
             $DB->beginTransaction();
-            if( $update_residents->execute( [$residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber, $residentID, $residentBdate, $residentContactNumber, $residentOccupation, $user_id ] ) ) {
+            if( $update_residents->execute( [$residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber, $residentBdate, $residentContactNumber, $residentOccupation, $user_id, $residentID,] ) ) {
                 $DB->commit();
                 $_SESSION['message'] = "Resident successfully updated";
                 $_SESSION['messagetype'] = "success";
@@ -81,13 +80,13 @@
 
     if ( isset($_POST['delete-residents']) ) {
         
-        $user_id  = sanitize_input( $_POST['itemid'] );
+        $residentID  = sanitize_input( $_POST['itemid'] );
 
-        $delete_residents = $DB->prepare("DELETE FROM resident WHERE user_id = ?");
+        $delete_residents = $DB->prepare("DELETE FROM resident WHERE residentID = ?");
 
         try {
             $DB->beginTransaction();
-            if( $delete_residents->execute( [ $user_id ] ) ) {
+            if( $delete_residents->execute( [ $residentID ] ) ) {
                 $DB->commit();
                 $_SESSION['message'] = "Resident successfully deleted";
                 $_SESSION['messagetype'] = "success";

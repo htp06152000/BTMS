@@ -55,7 +55,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="residentBdate">Year of birth: <span class="text-danger">*</span></label>
+                <label for="residentBdate">Birthdate: <span class="text-danger">*</span></label>
                 <input type="date" name="residentBdate" id="residentBdate" class="form-control" placeholder="mm/dd/yyyy" value="<?=$residents['residentBdate']?>"required />
             </div>
         </div>        
@@ -74,7 +74,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
         <div class="col-12">
             <hr class="hr" />
             <a href="<?=root_url('residents')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
-            <input type="hidden" name="residentID" value="<?=$residents['residentID']?>" class="d-none">
+            <input type="hidden" name="residentID" value="<?=$residents['user_id']?>" class="d-none">
             <button type="submit" name="update-residents" class="btn btn-primary rounded-50px px-4">Update</button>
         </div>
     </form>
@@ -125,7 +125,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
     <p class="fs-5 fw-bold">Zone Number: <span><?=$residents["residentZoneNumber"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Year Of Birth: <span><?=$residents["residentBdate"] ?></span></p>
+    <p class="fs-5 fw-bold">Birthdate: <span><?=$residents["residentBdate"] ?></span></p>
     </div>
     <div class="col-12">
             <hr class="hr" />
@@ -140,7 +140,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
 <?php endif; ?>
 
 <div class="row py-3">
-    <form method="POST" class="col-lg-7">
+    <form method="POST" class="col-lg-3">
         <div class="form-group">
             <div class="input-group">
                 <input type="search" name="s" id="search" class="form-control rounded-50px" placeholder="Search" />
@@ -152,13 +152,13 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
             </div>
         </div>
     </form>
-    <div class="col-lg-5">
+    <div class="col-lg-9">
         <button class="btn btn-primary rounded-50px float-right px-5" data-toggle="modal" data-target="#add-modal">Add</button>
     </div>
 </div>
 <div class="row py-3">
-    <div class="col-12 w-75">
-        <div class="card rounded-15px">
+    <div class="col-12">
+        <div class="card rounded-10px">
             <div class="card-header bg-primary">
                 <h6 class="card-text h4 text-light">
                     Residents
@@ -182,7 +182,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                         <tbody>
                             <?php $resident = $DB->query("SELECT * FROM resident ORDER BY residentFName ASC");
                                 foreach ($resident as $residents) : ?>
-                                    <tr class="table-sm">
+                                    <tr class="table-sm vertical-align-middle">
                                         <td><?=$residents["residentFName"] ?></td>
                                         <td><?=$residents["residentMName"] ?></td>
                                         <td><?=$residents["residentLName"] ?></td>
@@ -251,7 +251,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                 <input type="text" name="residentZoneNumber" id="residentZoneNumber" class="form-control" maxlength="25" required />
             </div>
             <div class="form-group">
-                <label for="residentBdate" class="text-muted font-weight-bold">Year of Birth:</label>
+                <label for="residentBdate" class="text-muted font-weight-bold">Birthdate:</label>
                 <input type="date" name="residentBdate" id="residentBdate" placeholder="mm/dd/yyyy" class="form-control" maxlength="25" required />
             </div>
             <div class="form-group">
