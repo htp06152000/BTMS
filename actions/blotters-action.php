@@ -37,7 +37,7 @@
 
         }
 
-        redirect_to('blotter');
+        redirect_to('blotters');
 
     }
 
@@ -54,12 +54,13 @@
         $complaint = sanitize_input($_POST['complaint'] );
         $action_taken = sanitize_input($_POST['action_taken'] ); 
         $complaint_status = sanitize_input($_POST['complaint_status'] );
+        $residentID = $_SESSION["user_info"]['id'];
 
-        $update_blotters = $DB->prepare("INSERT INTO blotter ( user_id, complainant, c_address, c_contact, person_to_complain, p_address, p_contact, date_recorded, action_taken, complaint_status, complaint) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $update_blotters = $DB->prepare("INSERT INTO blotter ( user_id, complainant, c_address, c_contact, person_to_complain, p_address, p_contact, date_recorded, action_taken, complaint_status, complaint, residentID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         try {
             $DB->beginTransaction();
-            if( $update_blotters->execute( [$user_id, $complainant, $c_address, $c_contact, $person_to_complain, $p_address, $p_contact, $date_recorded, $action_taken, $complaint_status, $complaint] ) ) {
+            if( $update_blotters->execute( [$user_id, $complainant, $c_address, $c_contact, $person_to_complain, $p_address, $p_contact, $date_recorded, $action_taken, $complaint_status, $complaint, $residentID] ) ) {
                 $DB->commit();
                 $_SESSION['message'] = "Blotter successfully added";
                 $_SESSION['messagetype'] = "success";
@@ -79,7 +80,7 @@
     }
 
 
-    if ( isset($_POST['delete-residents']) ) {
+    if ( isset($_POST['delete-blotter']) ) {
         
         $user_id  = sanitize_input( $_POST['itemid'] );
 

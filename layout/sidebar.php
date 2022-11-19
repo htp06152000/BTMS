@@ -15,7 +15,7 @@
             <a href="<?=root_url('residents')?>" class="nav-link text-light pl-4 <?=($pagetitle=='resident'?' active':'')?>"><i class="bi bi-person-badge"></i> Residents</a>
         </li>
         <li class="nav-items w-100">
-            <a href="<?=root_url('blotter')?>" class="nav-link text-light pl-4 <?=($pagetitle=='blotter'?' active':'')?>"><i class="bi bi-megaphone"></i> Blotter</a>
+            <a href="<?=root_url('blotters')?>" class="nav-link text-light pl-4 <?=($pagetitle=='blotter'?' active':'')?>"><i class="bi bi-megaphone"></i> Blotter</a>
         </li>
         <li class="nav-item dropdown w-100">
             <a href="" class="nav-link dropdown-toggle text-light pl-4" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"><i class="bi bi-card-list"></i> Transactions</a>

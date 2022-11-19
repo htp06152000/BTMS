@@ -142,7 +142,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
 <div class="row py-3">
     <form method="POST" class="col-lg-4">
         <div class="form-group">
-            <div class="input-group">
+            <div class="input-group animate__animated animate__slideInDown animate__faster">
                 <input type="search" name="s" id="search" class="form-control rounded-50px" placeholder="Search" />
                 <div class="input-group-append">
                     <button type="submit" class="input-group-text rounded-50px bg-primary text-white px-3">
@@ -152,7 +152,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
             </div>
         </div>
     </form>
-    <div class="col-lg-8">
+    <div class="col-lg-8 animate__animated animate__slideInDown animate__faster">
         <button class="btn btn-primary rounded-50px float-right px-5" data-toggle="modal" data-target="#add-modal">Add</button>
     </div>
 </div>
@@ -166,7 +166,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-hover table-striped">
                         <thead>
                             <tr class="table-sm">
                                 <th>First name</th>
@@ -182,7 +182,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                         <tbody>
                             <?php $resident = $DB->query("SELECT * FROM resident ORDER BY residentFName ASC");
                                 foreach ($resident as $residents) : ?>
-                                    <tr class="table-sm vertical-align-middle">
+                                    <tr class="table-sm">
                                         <td><?=$residents["residentFName"] ?></td>
                                         <td><?=$residents["residentMName"] ?></td>
                                         <td><?=$residents["residentLName"] ?></td>

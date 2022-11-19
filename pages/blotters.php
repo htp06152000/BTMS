@@ -82,7 +82,7 @@ $get_blotters->execute([ $_GET['edit'] ]);  ?>
         </div>
         <div class="col-12">
             <hr class="hr" />
-            <a href="<?=root_url('blotter')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
+            <a href="<?=root_url('blotters')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
             <input type="hidden" name="blotterID" value="<?=$blotters['blotterID']?>" class="d-none">
             <button type="submit" name="update-blotters" class="btn btn-primary rounded-50px px-4">Update</button>
         </div>
@@ -138,7 +138,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
     </div>
     <div class="col-12">
             <hr class="hr" />
-            <a href="<?=root_url('residents')?>" class="btn btn-secondary text-light rounded-50px px-4">Close</a>
+            <a href="<?=root_url('blotters')?>" class="btn btn-secondary text-light rounded-50px px-4">Close</a>
             <button class="btn btn-success text-light rounded-50px px-4">Generate</button>
     </div>
 </form>
@@ -175,7 +175,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-hover">
                         <thead>
                             <tr class="table-sm">
                                 <th>Complainant</th>
@@ -194,8 +194,8 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                                         <td><?=$blotters["date_recorded"] ?></td>
                                         <td><?=$blotters["complaint_status"] ?></td>
                                         <td>
-                                            <a href="<?=root_url('blotter')?>?view=<?=$blotters['blotterID']?>" class="btn btn-warning"><i class="fas fa-eye"></i></a>
-                                            <a href="<?=root_url('blotter')?>?edit=<?=$blotters['blotterID']?>" class="btn btn-primary">
+                                            <a href="<?=root_url('blotters')?>?view=<?=$blotters['blotterID']?>" class="btn btn-warning"><i class="fas fa-eye"></i></a>
+                                            <a href="<?=root_url('blotters')?>?edit=<?=$blotters['blotterID']?>" class="btn btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
                                             <a href="#delete-items" class="btn btn-danger" data-toggle="modal" data-itemid=<?=$blotters['blotterID']?>>
