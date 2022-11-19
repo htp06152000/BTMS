@@ -5,7 +5,7 @@
 <!-- Title ang login -->
 <div class="navbar navbar-expand-lg bg-light navbar-light p-1" id="navbar">
         <div class="container">
-                <a href="#" class="navbar-brand text-dark mb-0 h1 animate__animated animate__zoomIn">
+                <a href="#" class="navbar-brand text-dark mb-0 h1 animate__animated animate__zoomIn animate__faster">
                         <img src="resources/images/calumpangs.jpg" alt="Logo"> Barangay Transaction Management System</a>
 
                 <a href="<?=root_url("login")?>" class="btn btn-primary animate__animated animate__zoomIn" role="button">Login</a>
@@ -13,7 +13,7 @@
 </div>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-primary navbar-dark p-2 animate__animated animate__fadeInRight" style="box-shadow: 0rem 0rem 0.5rem 0rem;"> 
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark p-2 animate__animated animate__fadeInRight animate__faster" style="box-shadow: 0rem 0rem 0.5rem 0rem;"> 
         <div class="container">
                 <ul class="nav justify-content-start">
                         <li class="nav-item">

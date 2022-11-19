@@ -42,7 +42,6 @@ CREATE TABLE resident (
 CREATE TABLE blotter (
     blotterID int(50) primary key NOT NULL AUTO_INCREMENT,
     user_id bigint(15) NOT NULL,
-    residentID int(50) NOT NULL,
     date_recorded date NOT NULL,
     complainant varchar(50) NOT NULL,
     c_address varchar(100) NOT NULL,
@@ -54,7 +53,6 @@ CREATE TABLE blotter (
     action_taken varchar(50) NOT NULL,
     complaint_status varchar(50) NOT NULL DEFAULT 'Pending',
     location_of_incidence varchar(50) NOT NULL,
-    foreign key (residentID) references resident(residentID),
     foreign key (user_id) references users(user_id))ENGINE=InnoDB DEFAULT CHARSET=latin1;
     
     

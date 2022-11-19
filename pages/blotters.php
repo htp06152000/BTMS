@@ -76,7 +76,7 @@ $get_blotters->execute([ $_GET['edit'] ]);  ?>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="complaint">Location of Incidence: <span class="text-danger">*</span></label>
+                <label for="complaint">Complaint: <span class="text-danger">*</span></label>
                 <input type="text" name="complaint" id="complaint" class="form-control" value="<?=$blotters['complaint']?>" maxlength="100" required />
             </div>
         </div>
@@ -96,45 +96,48 @@ $get_blotters->execute([ $_GET['edit'] ]);  ?>
 <?php if (isset($_GET['view']) ) : ?>
 
 
-<?php $get_residents = $DB->prepare("SELECT * FROM resident WHERE residentID = ? LIMIT 0, 1");
-$get_residents->execute([ $_GET['view'] ]);  ?>
+<?php $get_blotters = $DB->prepare("SELECT * FROM blotter WHERE blotterID = ? LIMIT 0, 1");
+$get_blotters->execute([ $_GET['view'] ]);  ?>
 
-<?php if ($get_residents && $get_residents->rowCount() > 0) :
-        $residents = $get_residents->fetch(); ?>
+<?php if ($get_blotters && $get_blotters->rowCount() > 0) :
+        $blotters = $get_blotters->fetch(); ?>
 <form class="row py-5">
     <div class="col-12">
-        <h2 class="h2 text-primary">Residents Info</h2>
+        <h2 class="h2 text-primary">Blotter Report</h2>
         <hr class="hr" />
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">First Name: <span><?=$residents["residentFName"] ?></span></p>
+    <p class="fs-5 fw-bold">Complainant: <span><?=$blotters["complainant"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Middle Name: <span><?=$residents["residentMName"] ?></span></p>
+    <p class="fs-5 fw-bold">Complainant Address: <span><?=$blotters["c_address"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Last Name: <span><?=$residents["residentLName"] ?></span></p>
+    <p class="fs-5 fw-bold">Complainant Contact#: <span><?=$blotters["c_contact"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Age: <span><?=$residents["residentAge"] ?></span></p>
+    <p class="fs-5 fw-bold">Complainee: <span><?=$blotters["person_to_complain"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Gender: <span><?=$residents["residentGender"] ?></span></p>
+    <p class="fs-5 fw-bold">Complainee Address: <span><?=$blotters["p_address"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Occupation: <span><?=$residents["residentOccupation"] ?></span></p>
+    <p class="fs-5 fw-bold">Complainee Contact#: <span><?=$blotters["p_contact"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Civil Status: <span><?=$residents["residentCivilStatus"] ?></span></p>
+    <p class="fs-5 fw-bold">Date of Incident: <span><?=$blotters["date_recorded"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Contact #: <span><?=$residents["residentContactNumber"] ?></span></p>
+    <p class="fs-5 fw-bold">Action Taken: <span><?=$blotters["action_taken"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Zone Number: <span><?=$residents["residentZoneNumber"] ?></span></p>
+    <p class="fs-5 fw-bold">Location of Incident: <span><?=$blotters["location_of_incidence"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Year Of Birth: <span><?=$residents["residentBdate"] ?></span></p>
+    <p class="fs-5 fw-bold">Complaint Status: <span><?=$blotters["complaint_status"] ?></span></p>
+    </div>
+    <div class="col-lg-4">
+    <p class="fs-5 fw-bold">Complaint: <span><?=$blotters["complaint"] ?></span></p>
     </div>
     <div class="col-12">
             <hr class="hr" />
