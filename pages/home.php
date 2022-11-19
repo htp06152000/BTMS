@@ -57,7 +57,7 @@
 
 <!-- Services -->
 <section class="p-5">
-        <div class="container p-1">
+<div class="container p-1">
                 <div class="d-flex justify-content-center">
                         <div class="h1">Services</div>
                 </div>
@@ -71,11 +71,11 @@
                                                 <i class="bi bi-file-richtext"></i> 
                                         </div>
                                         <h4 class="card-title mb-3">Barangay Clearance</h4>
-                                        <p class="card-text">
+                                        <p class="card-text px-4">
                                                 View the document requirements needed for Barangay Clearance
                                         </p>
                                         <div class="button">
-                                                <button href="#" class="btn btn-outline-light btn-warning mb-3 text-dark" data-toggle="modal" data-target="#barangayclearance">Proceed</button>
+                                                <button href="#" class="btn btn-outline-light btn-warning my-5 text-dark" data-toggle="modal" data-target="#barangayclearance">Proceed</button>
                                         </div>
                                 </div>
                         </div>
@@ -86,11 +86,11 @@
                                                 <i class="bi bi-file-richtext"></i> 
                                         </div>
                                         <h4 class="card-title mb-3">Certificate of Indigency</h4>
-                                        <p class="card-text">
+                                        <p class="card-text px-4">
                                                 View the document requirements needed for Certificate of Indigency
                                         </p>
                                         <div class="button">
-                                                <a href="#" class="btn btn-outline-light btn-warning mb-3 text-dark" data-toggle="modal" data-target="#certofindigency">Proceed</a>
+                                                <a href="#" class="btn btn-outline-light btn-warning my-5 text-dark" data-toggle="modal" data-target="#certofindigency">Proceed</a>
                                         </div>
                                 </div>
                         </div>
@@ -101,15 +101,16 @@
                                                 <i class="bi bi-file-richtext"></i> 
                                         </div>
                                         <h4 class="card-title mb-3">Business Permit</h4>
-                                        <p class="card-text">
+                                        <p class="card-text px-4">
                                                 View the document requirements needed for Business permit
                                         </p>
                                         <div class="button">
-                                                <a href="#" class="btn btn-outline-light btn-warning mb-3 text-dark" data-toggle="modal" data-target="#businesspermit">Proceed</a>
+                                                <a href="#" class="btn btn-outline-light btn-warning my-5 text-dark" data-toggle="modal" data-target="#businesspermit">Proceed</a>
                                         </div>
                                 </div>
                         </div>
                 </div>
+        </div>
         </div>
         <div class="p-5"></div>
         <div class="p-5"></div>
