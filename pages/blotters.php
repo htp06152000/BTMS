@@ -83,7 +83,7 @@ $get_blotters->execute([ $_GET['edit'] ]);  ?>
         <div class="col-12">
             <hr class="hr" />
             <a href="<?=root_url('blotters')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
-            <input type="hidden" name="blotterID" value="<?=$blotters['user_id']?>" class="d-none">
+            <input type="hidden" name="blotterID" value="<?=$blotters['blotterID']?>" class="d-none">
             <button type="submit" name="update-blotters" class="btn btn-primary rounded-50px px-4">Update</button>
         </div>
     </form>

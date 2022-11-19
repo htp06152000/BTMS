@@ -2,7 +2,6 @@
 
 	if ( isset($_POST['update-residents']) ) {
         
-        $user_id = $_SESSION["user_info"]["id"];
         $residentFName = sanitize_input( $_POST['residentFName'] );
         $residentMName = sanitize_input( $_POST['residentMName'] );
         $residentLName = sanitize_input( $_POST['residentLName'] );
@@ -10,17 +9,16 @@
         $residentCivilStatus = sanitize_input( $_POST['residentCivilStatus'] );
         $residentGender = sanitize_input( $_POST['residentGender'] );
         $residentZoneNumber = sanitize_input( $_POST['residentZoneNumber'] );
-        $residentID = sanitize_input( $_POST['residentID']);
         $residentBdate = sanitize_input($_POST['residentBdate'] );
         $residentContactNumber = sanitize_input($_POST['residentContactNumber'] ); 
         $residentOccupation = sanitize_input($_POST['residentOccupation'] );
-        $user_id = sanitize_input( $_POST['user_id'] );
+        $residentID = sanitize_input( $_POST['residentID']);
 
-        $update_residents = $DB->prepare("UPDATE resident SET residentFName = ?, residentMName = ?, residentLName = ?, residentAge = ?, residentCivilStatus = ?, residentGender = ?, residentZoneNumber = ?, residentBdate = ?, residentContactNumber = ?, residentOccupation = ?, residentID = ? WHERE user_id = ?");
+        $update_residents = $DB->prepare("UPDATE resident SET residentFName = ?, residentMName = ?, residentLName = ?, residentAge = ?, residentCivilStatus = ?, residentGender = ?, residentZoneNumber = ?, residentBdate = ?, residentContactNumber = ?, residentOccupation = ? WHERE residentID = ?");
 
         try {
             $DB->beginTransaction();
-            if( $update_residents->execute( [$residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber, $residentBdate, $residentContactNumber, $residentOccupation, $user_id, $residentID,] ) ) {
+            if( $update_residents->execute( [$residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber, $residentBdate, $residentContactNumber, $residentOccupation, $residentID] ) ) {
                 $DB->commit();
                 $_SESSION['message'] = "Resident successfully updated";
                 $_SESSION['messagetype'] = "success";

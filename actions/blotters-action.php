@@ -2,7 +2,6 @@
 
 	if ( isset($_POST['update-blotters']) ) {
         
-        $user_id = $_SESSION["user_info"]["id"];
         $complainant = sanitize_input( $_POST['complainant'] );
         $c_address = sanitize_input( $_POST['c_address'] );
         $c_contact = sanitize_input( $_POST['c_contact'] );
@@ -15,13 +14,12 @@
         $location_of_incidence = sanitize_input($_POST['location_of_incidence']);
         $complaint = sanitize_input($_POST['complaint'] );
         $blotterID = sanitize_input($_POST['blotterID']);
-        $user_id = sanitize_input($_POST['user_id']);
 
-        $update_blotters = $DB->prepare("UPDATE blotter SET complainant = ?, c_address = ?, c_contact = ?, person_to_complain = ?, p_address = ?, p_contact = ?, date_recorded = ?, action_taken = ?, complaint_status = ?, location_of_incidence = ?, complaint = ?, blotterID = ? WHERE user_id = ?");
+        $update_blotters = $DB->prepare("UPDATE blotter SET complainant = ?, c_address = ?, c_contact = ?, person_to_complain = ?, p_address = ?, p_contact = ?, date_recorded = ?, action_taken = ?, complaint_status = ?, location_of_incidence = ?, complaint = ? WHERE blotterID = ?");
 
         try {
             $DB->beginTransaction();
-            if( $update_blotters->execute( [$complainant, $c_address, $c_contact, $person_to_complain, $p_address, $p_contact, $date_recorded, $action_taken, $complaint_status, $location_of_incidence, $complaint, $blotterID, $user_id,] ) ) {
+            if( $update_blotters->execute( [$complainant, $c_address, $c_contact, $person_to_complain, $p_address, $p_contact, $date_recorded, $action_taken, $complaint_status, $location_of_incidence, $complaint, $blotterID] ) ) {
                 $DB->commit();
                 $_SESSION['message'] = "Blotter report successfully updated";
                 $_SESSION['messagetype'] = "success";

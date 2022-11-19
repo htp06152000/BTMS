@@ -74,7 +74,7 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
         <div class="col-12">
             <hr class="hr" />
             <a href="<?=root_url('residents')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
-            <input type="hidden" name="residentID" value="<?=$residents['user_id']?>" class="d-none">
+            <input type="hidden" name="residentID" value="<?=$residents['residentID']?>" class="d-none">
             <button type="submit" name="update-residents" class="btn btn-primary rounded-50px px-4">Update</button>
         </div>
     </form>
