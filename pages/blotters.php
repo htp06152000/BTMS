@@ -178,7 +178,7 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover">
+                    <table class="table table-striped table-hover table-bordered">
                         <thead>
                             <tr class="table-sm">
                                 <th>Complainant</th>

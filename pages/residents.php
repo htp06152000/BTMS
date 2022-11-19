@@ -166,7 +166,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover table-striped">
+                    <table class="table table-hover table-striped table-bordered">
                         <thead>
                             <tr class="table-sm">
                                 <th>First name</th>

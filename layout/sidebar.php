@@ -22,13 +22,13 @@
             <a href="" class="nav-link dropdown-toggle text-light pl-4" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"><i class="bi bi-card-list"></i> Transactions</a>
             <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
                 <li>
-                    <a href="<?=root_url('BarangayClearance')?>" class="dropdown-item text-light pl-4 p-2"><i class="bi bi-filetype-doc"></i> Barangay Clearance</a>
+                    <a href="<?=root_url('clearances')?>" class="dropdown-item text-light pl-4 p-2 <?=($pagetitle=='clearances'?' active':'')?>"><i class="bi bi-filetype-doc"></i> Barangay Clearance</a>
                 </li>
                 <li>
-                    <a href="<?=root_url('CertificateOfIndigency')?>" class="dropdown-item text-light pl-4 p-2"><i class="bi bi-filetype-doc"></i> Certificate of Indigency</a>
+                    <a href="<?=root_url('indigencies')?>" class="dropdown-item text-light pl-4 p-2 <?=($pagetitle=='indigencies'?' active':'')?>"><i class="bi bi-filetype-doc"></i> Certificate of Indigency</a>
                 </li>
                 <li>
-                    <a href="<?=root_url('BusinessPermit')?>" class="dropdown-item text-light pl-4 p-2"><i class="bi bi-filetype-doc"></i> Business Permit</a>
+                    <a href="<?=root_url('permits')?>" class="dropdown-item text-light pl-4 p-2 <?=($pagetitle=='permits'?' active':'')?>"><i class="bi bi-filetype-doc"></i> Business Permit</a>
                 </li>
 
             </ul>
