@@ -21,7 +21,7 @@
 
         try {
             $DB->beginTransaction();
-            if( $update_blotters->execute( [$user_id, $complainant, $c_address, $c_contact, $person_to_complain, $p_address, $p_contact, $date_recorded, $action_taken, $complaint_status, $location_of_incidence, $complaint, $blotterID] ) ) {
+            if( $update_blotters->execute( [$complainant, $c_address, $c_contact, $person_to_complain, $p_address, $p_contact, $date_recorded, $action_taken, $complaint_status, $location_of_incidence, $complaint, $blotterID, $user_id,] ) ) {
                 $DB->commit();
                 $_SESSION['message'] = "Blotter report successfully updated";
                 $_SESSION['messagetype'] = "success";

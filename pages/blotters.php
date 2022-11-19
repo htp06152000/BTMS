@@ -63,8 +63,8 @@ $get_blotters->execute([ $_GET['edit'] ]);  ?>
             <div class="form-group">
                 <label for="complaint_status">Status of Report:</label>
                     <select name="complaint_status" id="complaint_status" class="custom-select">
-                        <option <?=$user['complaint_status']=='Pending' ? 'selected' : '' ?> value="Pending" >Pending</option>
-                        <option <?=$user['complaint_status']=='Solve' ? 'selected' : '' ?> value="Solve" >Solved</option>
+                        <option <?=$blotters['complaint_status']=='Pending' ? 'selected' : '' ?> value="Pending" >Pending</option>
+                        <option <?=$blotters['complaint_status']=='Solve' ? 'selected' : '' ?> value="Solve" >Solved</option>
                     </select>
             </div>
         </div>        
@@ -83,7 +83,7 @@ $get_blotters->execute([ $_GET['edit'] ]);  ?>
         <div class="col-12">
             <hr class="hr" />
             <a href="<?=root_url('blotters')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
-            <input type="hidden" name="blotterID" value="<?=$blotters['blotterID']?>" class="d-none">
+            <input type="hidden" name="blotterID" value="<?=$blotters['user_id']?>" class="d-none">
             <button type="submit" name="update-blotters" class="btn btn-primary rounded-50px px-4">Update</button>
         </div>
     </form>
