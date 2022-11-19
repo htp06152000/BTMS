@@ -106,7 +106,7 @@ $get_user->execute([ $_GET['view'] ]);  ?>
 <?php endif; ?>
 
 <div class="row py-3">
-    <form method="POST" class="col-lg-3">
+    <form method="POST" class="col-lg-4">
         <div class="form-group animate__animated animate__slideInDown  animate__faster">
             <div class="input-group">
                 <input type="search" name="s" id="search" class="form-control rounded-50px" placeholder="Search" />
@@ -118,7 +118,7 @@ $get_user->execute([ $_GET['view'] ]);  ?>
             </div>
         </div>
     </form>
-    <div class="col-lg-9">
+    <div class="col-lg-8">
         <button class="btn btn-primary rounded-50px float-right px-5 animate__animated animate__slideInDown animate__faster" data-toggle="modal" data-target="#add-modal">Add</button>
     </div>
 </div>
