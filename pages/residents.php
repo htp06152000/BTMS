@@ -180,9 +180,9 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $resident = $DB->query("SELECT * FROM resident ORDER BY residentFName ASC");
+                            <?php $resident = $DB->query("SELECT * FROM resident ORDER BY residentLName ASC");
                                 foreach ($resident as $residents) : ?>
-                                    <tr class="table-sm">
+                                    <tr class="table-sm overflow-auto">
                                         <td><?=$residents["residentFName"] ?></td>
                                         <td><?=$residents["residentMName"] ?></td>
                                         <td><?=$residents["residentLName"] ?></td>

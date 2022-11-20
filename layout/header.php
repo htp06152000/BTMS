@@ -42,5 +42,5 @@
                 }
             ?>
 <div id="page-content-wrapper" class="smooth-transition min-vh-100">
-                <div class="container-fluid px-0">
+                <div class="container-fluid px-0 pl-5">
                     

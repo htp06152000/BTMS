@@ -2,7 +2,7 @@
 
 <!-- Log in form -->
 <div class="row justify-content-center vh-100">
-    <div class="login text-center text-light shadow-sm animate__animated animate__<?=(isset($_SESSION['message'])?'swing':'slideInDown')?>" method="post"  style="margin-top: 110px; width: 275px">
+    <div class="login text-center text-light shadow-sm animate__animated animate__<?=(isset($_SESSION['message'])?'swing':'slideInDown')?>" method="post"  style="margin-top: 110px; width: 275px padding-left: 200px;">
         <a href="<?=root_url("home")?>" class="img align-items-center">
             <img src="./resources/images/logins.jpg" alt="">
         </a>

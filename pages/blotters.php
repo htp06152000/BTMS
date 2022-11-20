@@ -153,10 +153,10 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
 
 <!-- Search bar -->
 <div class="row py-3">
-    <form method="POST" class="col-lg-4">
+    <form method="GET" action="" class="col-lg-4">
         <div class="form-group animate__animated animate__slideInDown  animate__faster">
             <div class="input-group">
-                <input type="search" name="s" id="search" class="form-control rounded-50px" placeholder="Search" />
+                <input type="search" name="search" id="search" value="" class="form-control rounded-50px" placeholder="Search" />
                 <div class="input-group-append">
                     <button type="submit" class="input-group-text rounded-50px bg-primary text-white px-3">
                         <i class="fas fa-search"></i>

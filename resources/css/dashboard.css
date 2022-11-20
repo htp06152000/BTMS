@@ -15,10 +15,9 @@ body {
 }
 
 .sidebar {
-    width: 220px;
+    width: 260px;
     height: 100vh;
     position: fixed;
-    /* margin-left: -300px; */
     background-color: rgb(61, 63, 194);
     transition: 0.5s;
 } 
@@ -67,7 +66,7 @@ body {
 .nav-items .nav-link:active::after,
 .nav-items .nav-link:focus::after,
 .nav-items .nav-link:visited::after {
-    width: 200px;
+    width: 240px;
     transition: width 0.3s linear;
     background-color: rgb(248, 252, 25);
 }
@@ -75,4 +74,3 @@ body {
 .heading {
     font-family: 'Poppins';
 }
-
