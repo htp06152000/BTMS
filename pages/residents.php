@@ -98,34 +98,34 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
         <hr class="hr" />
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">First Name: <span><?=$residents["residentFName"] ?></span></p>
+    <p class="fs-5 font-weight-bold">First Name: <span class="font-weight-normal"><?=$residents["residentFName"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Middle Name: <span><?=$residents["residentMName"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Middle Name: <span class="font-weight-normal"><?=$residents["residentMName"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Last Name: <span><?=$residents["residentLName"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Last Name: <span class="font-weight-normal"><?=$residents["residentLName"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Age: <span><?=$residents["residentAge"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Age: <span class="font-weight-normal"><?=$residents["residentAge"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Gender: <span><?=$residents["residentGender"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Gender: <span class="font-weight-normal"><?=$residents["residentGender"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Occupation: <span><?=$residents["residentOccupation"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Occupation: <span class="font-weight-normal"><?=$residents["residentOccupation"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Civil Status: <span><?=$residents["residentCivilStatus"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Civil Status: <span class="font-weight-normal"><?=$residents["residentCivilStatus"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Contact #: <span><?=$residents["residentContactNumber"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Contact #: <span class="font-weight-normal"><?=$residents["residentContactNumber"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Zone Number: <span><?=$residents["residentZoneNumber"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Zone Number: <span class="font-weight-normal"><?=$residents["residentZoneNumber"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Birthdate: <span><?=$residents["residentBdate"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Birthdate: <span class="font-weight-normal"><?=$residents["residentBdate"] ?></span></p>
     </div>
     <div class="col-12">
             <hr class="hr" />
@@ -168,7 +168,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                 <div class="table-responsive">
                     <table class="table table-hover table-striped table-bordered">
                         <thead>
-                            <tr class="table-sm">
+                            <tr class="table-sm text-center">
                                 <th>First name</th>
                                 <th>Middle name</th>
                                 <th>Last name</th>
@@ -186,16 +186,16 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                                         <td><?=$residents["residentFName"] ?></td>
                                         <td><?=$residents["residentMName"] ?></td>
                                         <td><?=$residents["residentLName"] ?></td>
-                                        <td><?=$residents["residentAge"] ?></td>
-                                        <td><?=$residents["residentCivilStatus"] ?></td>
-                                        <td><?=$residents["residentGender"] ?></td>
-                                        <td><?=$residents["residentZoneNumber"] ?></td>
-                                        <td>
-                                            <a href="<?=root_url('residents')?>?view=<?=$residents['residentID']?>" class="btn btn-warning"><i class="fas fa-eye"></i></a>
-                                            <a href="<?=root_url('residents')?>?edit=<?=$residents['residentID']?>" class="btn btn-primary">
+                                        <td class="text-center"><?=$residents["residentAge"] ?></td>
+                                        <td class="text-center"><?=$residents["residentCivilStatus"] ?></td>
+                                        <td class="text-center"><?=$residents["residentGender"] ?></td>
+                                        <td class="text-center"><?=$residents["residentZoneNumber"] ?></td>
+                                        <td class="text-center">
+                                            <a href="<?=root_url('residents')?>?view=<?=$residents['residentID']?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i></a>
+                                            <a href="<?=root_url('residents')?>?edit=<?=$residents['residentID']?>" class="btn btn-sm btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="#delete-items" class="btn btn-danger" data-toggle="modal" data-itemid=<?=$residents['residentID']?>>
+                                            <a href="#delete-items" class="btn btn-sm btn-danger" data-toggle="modal" data-itemid=<?=$residents['residentID']?>>
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>

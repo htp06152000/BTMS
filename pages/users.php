@@ -77,22 +77,22 @@ $get_user->execute([ $_GET['view'] ]);  ?>
         <hr class="hr" />
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">First Name: <span><?=$user["first_name"] ?></span></p>
+    <p class="fs-5 font-weight-bold">First Name: <span class="font-weight-normal"><?=$user["first_name"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Middle Name: <span><?=$user["middle_name"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Middle Name: <span class="font-weight-normal"><?=$user["middle_name"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Last Name: <span><?=$user["last_name"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Last Name: <span class="font-weight-normal"><?=$user["last_name"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Email: <span><?=$user["email"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Email: <span class="font-weight-normal"><?=$user["email"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Address: <span><?=$user["address"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Address: <span class="font-weight-normal"><?=$user["address"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Role: <span><?=$user["role"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Role: <span class="font-weight-normal"><?=$user["role"] ?></span></p>
     </div>
     <div class="col-12">
             <hr class="hr" />
@@ -134,7 +134,7 @@ $get_user->execute([ $_GET['view'] ]);  ?>
                 <div class="table-responsive">
                     <table class="table table-sm table-striped table-hover table-bordered">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th>Firstname</th>
                                 <th>Lastname</th>
                                 <th>Email</th>
@@ -144,16 +144,16 @@ $get_user->execute([ $_GET['view'] ]);  ?>
                         <tbody>
                             <?php $users = $DB->query("SELECT * FROM users ORDER BY first_name ASC");
                                 foreach ($users as $user) : ?>
-                                    <tr class="table-sm">
+                                    <tr class="table-sm text-center">
                                         <td><?=$user["first_name"] ?></td>
                                         <td><?=$user["last_name"] ?></td>
                                         <td><?=$user["email"] ?></td>
                                         <td>
-                                        <a href="<?=root_url('users')?>?view=<?=$user['user_id']?>" class="btn btn-warning"><i class="fas fa-eye"></i></a>
-                                            <a href="<?=root_url('users')?>?edit=<?=$user['user_id']?>" class="btn btn-primary">
+                                        <a href="<?=root_url('users')?>?view=<?=$user['user_id']?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i></a>
+                                            <a href="<?=root_url('users')?>?edit=<?=$user['user_id']?>" class="btn btn-sm btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="#delete-item" class="btn btn-danger" data-toggle="modal" data-itemid=<?=$user['user_id']?>>
+                                            <a href="#delete-item" class="btn btn-sm btn-danger" data-toggle="modal" data-itemid=<?=$user['user_id']?>>
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>

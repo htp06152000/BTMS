@@ -13,9 +13,9 @@
 </div>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-primary navbar-dark p-2 animate__animated animate__fadeInRight animate__faster" style="box-shadow: 0rem 0rem 0.5rem 0rem;"> 
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark p-2 " style="box-shadow: 0rem 0rem 0.5rem 0rem;"> 
         <div class="container">
-                <ul class="nav justify-content-start">
+                <ul class="nav justify-content-start animate__animated animate__fadeInLeft animate__faster">
                         <li class="nav-item">
                                 <a href="#" class="nav-link text-light active h6">Home</a>
                         </li>
@@ -34,7 +34,7 @@
 <!--Content-->
 <section class="text-dark p-5 p-lg-0 p-lg-5 text-start text-sm-start">
         <div class="container">
-                <div class="d-sm-flex animate__animated animate__zoomIn">
+                <div class="d-sm-flex animate__animated animate__fadeInDown">
                         <img class="img-fluid w-25" src="resources/images/calumpang.jfif" alt="" style="border-radius: 20px;">
 
                         <div>
@@ -66,46 +66,43 @@
         <div class="container">
                 <div class="row text-center">
                         <div class="col-md">
-                                <div class="card bg-primary text-light text-center mb-1">
-                                        <div class="h1 mb-1">
-                                                <i class="bi bi-file-richtext"></i> 
+                                <div class="card bg-info text-light text-center mb-1 ">
+                                        <div class="h1 mb-1 py-3">
                                         </div>
-                                        <h4 class="card-title mb-3">Barangay Clearance</h4>
+                                        <h4 class="card-title mb-3 text-uppercase font-weight-bold">Barangay Clearance</h4>
                                         <p class="card-text px-4">
                                                 View the document requirements needed for Barangay Clearance
                                         </p>
                                         <div class="button">
-                                                <button href="#" class="btn btn-outline-light btn-warning my-5 text-dark" data-toggle="modal" data-target="#barangayclearance">Proceed</button>
+                                                <button href="#" class="btn btn-outline-warning btn-light my-5 text-dark w-25" data-toggle="modal" data-target="#barangayclearance">Proceed</button>
                                         </div>
                                 </div>
                         </div>
                 
                         <div class="col-md">
-                                <div class="card bg-primary text-light text-center mb-1">
-                                        <div class="h1 mb-1">
-                                                <i class="bi bi-file-richtext"></i> 
+                                <div class="card bg-info text-light text-center mb-1">
+                                        <div class="h1 mb-1 py-3">
                                         </div>
-                                        <h4 class="card-title mb-3">Certificate of Indigency</h4>
+                                        <h4 class="card-title mb-3 text-uppercase font-weight-bold">Certificate of Indigency</h4>
                                         <p class="card-text px-4">
                                                 View the document requirements needed for Certificate of Indigency
                                         </p>
                                         <div class="button">
-                                                <a href="#" class="btn btn-outline-light btn-warning my-5 text-dark" data-toggle="modal" data-target="#certofindigency">Proceed</a>
+                                                <a href="#" class="btn btn-outline-warning btn-light my-5 text-dark w-25" data-toggle="modal" data-target="#certofindigency">Proceed</a>
                                         </div>
                                 </div>
                         </div>
 
                         <div class="col-md">
-                                <div class="card bg-primary text-light text-center mb-1">
-                                        <div class="h1 mb-1">
-                                                <i class="bi bi-file-richtext"></i> 
+                                <div class="card bg-info text-light text-center mb-1">
+                                        <div class="h1 mb-1 py-3">
                                         </div>
-                                        <h4 class="card-title mb-3">Business Permit</h4>
+                                        <h4 class="card-title mb-3 text-uppercase font-weight-bold">Business Permit</h4>
                                         <p class="card-text px-4">
                                                 View the document requirements needed for Business permit
                                         </p>
                                         <div class="button">
-                                                <a href="#" class="btn btn-outline-light btn-warning my-5 text-dark" data-toggle="modal" data-target="#businesspermit">Proceed</a>
+                                                <a href="#" class="btn btn-outline-warning btn-light my-5 text-dark w-25" data-toggle="modal" data-target="#businesspermit">Proceed</a>
                                         </div>
                                 </div>
                         </div>

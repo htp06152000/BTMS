@@ -1,10 +1,13 @@
 <?php if ( ! defined('ACCESS') ) die("Direct access not allowed."); ?>
 
+<!-- Nav Title -->
 <section class="sidebar sidebar-expand d-flex flex-column align-items-center" id="sidebar">
     <div class="sidebar-brand text-light mt-5">
         <h4 class="heading font-weight-bold text">ADMINISTRATOR</h4>
         <hr class="hr" />
 </div>
+
+<!-- Nav Links and items -->
     <ul class="sidebar-nav d-flex flex-column mt-5 w-100">
         <li class="nav-items w-100">
             <a href="<?=root_url('dashboard')?>" class="nav-link text-light pl-4 <?=($pagetitle=='dashboard'?' active':'')?>"><i class="bi bi-ui-checks-grid"></i> Dashboard</a>

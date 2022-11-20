@@ -1,6 +1,6 @@
 <?php if (isset($_GET['edit']) ) : ?>
 
-
+<!-- Edit datas from Tables -->
 <?php $get_blotters = $DB->prepare("SELECT * FROM blotter WHERE blotterID = ? LIMIT 0, 1");
 $get_blotters->execute([ $_GET['edit'] ]);  ?>
 
@@ -95,7 +95,7 @@ $get_blotters->execute([ $_GET['edit'] ]);  ?>
 <!-- View Modal -->
 <?php if (isset($_GET['view']) ) : ?>
 
-
+<!-- View Data from Table -->
 <?php $get_blotters = $DB->prepare("SELECT * FROM blotter WHERE blotterID = ? LIMIT 0, 1");
 $get_blotters->execute([ $_GET['view'] ]);  ?>
 
@@ -107,37 +107,37 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
         <hr class="hr" />
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Complainant: <span><?=$blotters["complainant"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Complainant: <span class="font-weight-normal"><?=$blotters["complainant"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Complainant Address: <span><?=$blotters["c_address"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Complainant Address: <span class="font-weight-normal"><?=$blotters["c_address"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Complainant Contact#: <span><?=$blotters["c_contact"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Complainant Contact#: <span class="font-weight-normal"><?=$blotters["c_contact"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Complainee: <span><?=$blotters["person_to_complain"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Complainee: <span class="font-weight-normal"><?=$blotters["person_to_complain"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Complainee Address: <span><?=$blotters["p_address"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Complainee Address: <span class="font-weight-normal"><?=$blotters["p_address"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Complainee Contact#: <span><?=$blotters["p_contact"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Complainee Contact#: <span class="font-weight-normal"><?=$blotters["p_contact"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Date of Incident: <span><?=$blotters["date_recorded"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Date of Incident: <span class="font-weight-normal"><?=$blotters["date_recorded"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Action Taken: <span><?=$blotters["action_taken"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Action Taken: <span class="font-weight-normal"><?=$blotters["action_taken"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Location of Incident: <span><?=$blotters["location_of_incidence"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Location of Incident: <span class="font-weight-normal"><?=$blotters["location_of_incidence"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Complaint Status: <span><?=$blotters["complaint_status"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Complaint Status: <span class="font-weight-normal"><?=$blotters["complaint_status"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 fw-bold">Complaint: <span><?=$blotters["complaint"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Complaint: <span class="font-weight-normal"><?=$blotters["complaint"] ?></span></p>
     </div>
     <div class="col-12">
             <hr class="hr" />
@@ -151,6 +151,7 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
 <?php else : ?>
 <?php endif; ?>
 
+<!-- Search bar -->
 <div class="row py-3">
     <form method="POST" class="col-lg-4">
         <div class="form-group animate__animated animate__slideInDown  animate__faster">
@@ -164,10 +165,12 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
             </div>
         </div>
     </form>
+    <!-- Add button -->
     <div class="col-lg-8">
         <button class="btn btn-primary rounded-50px float-right px-5 animate__animated animate__slideInDown  animate__faster" data-toggle="modal" data-target="#add-modal">Add</button>
     </div>
 </div>
+<!-- Table Title -->
 <div class="row py-3">
     <div class="col-12">
         <div class="card rounded-10px">
@@ -176,11 +179,12 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
                     Blotter
                 </h6>
             </div>
+            <!-- Table Body -->
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-bordered">
                         <thead>
-                            <tr class="table-sm">
+                            <tr class="table-sm text-center">
                                 <th>Complainant</th>
                                 <th>Complainee</th>
                                 <th>Date recorded</th>
@@ -194,14 +198,14 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
                                     <tr class="table-sm">
                                         <td><?=$blotters["complainant"] ?></td>
                                         <td><?=$blotters["person_to_complain"] ?></td>
-                                        <td><?=$blotters["date_recorded"] ?></td>
-                                        <td><?=$blotters["complaint_status"] ?></td>
-                                        <td>
-                                            <a href="<?=root_url('blotters')?>?view=<?=$blotters['blotterID']?>" class="btn btn-warning"><i class="fas fa-eye"></i></a>
-                                            <a href="<?=root_url('blotters')?>?edit=<?=$blotters['blotterID']?>" class="btn btn-primary">
+                                        <td class="text-center"><?=$blotters["date_recorded"] ?></td>
+                                        <td class="font-weight-bold text-center"><?=$blotters["complaint_status"] ?></td>
+                                        <td class="text-center">
+                                            <a href="<?=root_url('blotters')?>?view=<?=$blotters['blotterID']?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i></a>
+                                            <a href="<?=root_url('blotters')?>?edit=<?=$blotters['blotterID']?>" class="btn btn-sm btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="#delete-items" class="btn btn-danger" data-toggle="modal" data-itemid=<?=$blotters['blotterID']?>>
+                                            <a href="#delete-items" class="btn btn-sm btn-danger" data-toggle="modal" data-itemid=<?=$blotters['blotterID']?>>
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
@@ -221,9 +225,9 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
         <div class="modal-content">
 
         <!-- Modal Header -->
-        <div class="modal-header">
-            <h4 class="modal-title">Add Blotter</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header bg-primary">
+            <h4 class="modal-title text-light bg-primary">Add Blotter</h4>
+            <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
         </div>
 
         <!-- Modal body -->
