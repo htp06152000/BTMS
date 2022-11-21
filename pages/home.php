@@ -5,7 +5,7 @@
 <!-- Title ang login -->
 <div class="navbar navbar-expand-lg bg-light navbar-light p-1" id="navbar">
         <div class="container">
-                <a href="#" class="navbar-brand text-dark mb-0 h1 animate__animated animate__zoomIn animate__faster">
+                <a href="#" class="navbar-brand text-dark mb-0 h1 animate__animated animate__fadeInRight animate__faster font-weight-bold">
                         <img src="resources/images/calumpangs.jpg" alt="Logo"> Barangay Transaction Management System</a>
 
                 <a href="<?=root_url("login")?>" class="btn btn-primary animate__animated animate__zoomIn" role="button">Login</a>

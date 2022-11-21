@@ -44,7 +44,10 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="residentGender">Gender:</label>
-                <input type="text" name="residentGender" id="residentGender" class="form-control" value="<?=$residents['residentGender']?>" maxlength="255" />
+                <select name="residentGender" id="residentGender" class="custom-select">
+                    <option <?=$residents['residentGender']=='Male' ? 'selected' : '' ?> value="Male" >Male</option>
+                    <option <?=$residents['residentGender']=='Female' ? 'selected' : '' ?> value="Female" >Female</option>
+                </select>
             </div>
         </div>
         <div class="col-lg-4">
@@ -244,7 +247,10 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
             </div>
             <div class="form-group">
                 <label for="residentGender" class="text-muted font-weight-bold">Gender:</label>
-                <input type="text" name="residentGender" id="residentGender" class="form-control" maxlength="25" required />
+                <select name="residentGender" id="residentGender" class="custom-select">
+                    <option <?=$residents['residentGender']=='Male' ? 'selected' : '' ?> value="Male" >Male</option>
+                    <option <?=$residents['residentGender']=='Female' ? 'selected' : '' ?> value="Female" >Female</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="residentZoneNumber" class="text-muted font-weight-bold">Zone #:</label>
