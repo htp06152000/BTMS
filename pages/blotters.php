@@ -174,7 +174,7 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
 <div class="row py-3">
     <div class="col-12">
         <div class="card rounded-10px">
-            <div class="card-header bg-primary">
+            <div class="card-header bg-danger">
                 <h6 class="card-text h4 text-light">
                     Blotter
                 </h6>
