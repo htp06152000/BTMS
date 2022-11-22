@@ -63,6 +63,11 @@ CREATE TABLE services (
     price varchar(4) NOT NULL,
     primary key (servicesID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+    INSERT INTO 'services' ('servicesID', 'services', 'price')
+    VALUES ('1', 'Barangay Clearance', '20.00php')
+    VALUES ('2', 'Certificate of Indigency', '20.00php')
+    VALUES ('3', 'Business Permit', '20.00php')
+
 /*transaction*/
 CREATE TABLE transaction (
     transactionID int(30) NOT NULL AUTO_INCREMENT,

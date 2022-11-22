@@ -193,7 +193,7 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $blotter = $DB->query("SELECT * FROM blotter ORDER BY date_recorded ASC");
+                            <?php $blotter = $DB->query("SELECT * FROM blotter ORDER BY date_recorded DEC");
                                 foreach ($blotter as $blotters) : ?>
                                     <tr class="table-sm">
                                         <td><?=$blotters["complainant"] ?></td>
