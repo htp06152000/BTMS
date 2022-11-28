@@ -124,7 +124,7 @@ $get_user->execute([ $_GET['view'] ]);  ?>
 </div>
 <div class="row py-3">
     <div class="col-12">
-        <div class="card rounded-10px">
+        <div class="card rounded-10px" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
             <div class="card-header bg-primary">
                 <h6 class="card-text h4 text-light">
                     Users

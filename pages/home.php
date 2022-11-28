@@ -8,7 +8,7 @@
                 <a href="#" class="navbar-brand text-dark mb-0 h1 animate__animated animate__fadeInRight animate__faster font-weight-bold">
                         <img src="resources/images/calumpangs.jpg" alt="Logo"> Barangay Transaction Management System</a>
 
-                <a href="<?=root_url("login")?>" class="btn btn-primary animate__animated animate__zoomIn" role="button">Login</a>
+                <a href="<?=root_url("login")?>" class="btn btn-primary animate__animated animate__zoomIn" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;" role="button">Login</a>
         </div>
 </div>
 
@@ -66,7 +66,7 @@
         <div class="container">
                 <div class="row text-center">
                         <div class="col-md">
-                                <div class="card bg-info text-light text-center mb-1 ">
+                                <div class="card bg-info text-light text-center mb-1 " style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;">
                                         <div class="h1 mb-1 py-3">
                                         </div>
                                         <h4 class="card-title mb-3 text-uppercase font-weight-bold">Barangay Clearance</h4>
@@ -80,7 +80,7 @@
                         </div>
                 
                         <div class="col-md">
-                                <div class="card bg-info text-light text-center mb-1">
+                                <div class="card bg-info text-light text-center mb-1" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;">
                                         <div class="h1 mb-1 py-3">
                                         </div>
                                         <h4 class="card-title mb-3 text-uppercase font-weight-bold">Certificate of Indigency</h4>
@@ -94,7 +94,7 @@
                         </div>
 
                         <div class="col-md">
-                                <div class="card bg-info text-light text-center mb-1">
+                                <div class="card bg-info text-light text-center mb-1" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;">
                                         <div class="h1 mb-1 py-3">
                                         </div>
                                         <h4 class="card-title mb-3 text-uppercase font-weight-bold">Business Permit</h4>
@@ -114,7 +114,7 @@
 </section>
 
 <!-- track request -->
-<section class="bg-primary text-light p-3">
+<section class="bg-primary text-light p-3" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;">
         <div class="container">
                 <div class="d-md-flex justify-content-between align-items-center">
                         <h4 class="mb-3 mb-md-0 pe-1 text-start">Track</h4>
@@ -130,7 +130,7 @@
 <div class="p-4">
         <div class="container">
                 <div class="d-flex justify-content-center">
-                        <a class="btn btn-primary btn-sm" role="button" href="#navbar">Back to top</a>
+                        <a class="btn btn-primary btn-sm" role="button" href="#navbar" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;">Back to top</a>
                 </div>        
         </div>
 </div>

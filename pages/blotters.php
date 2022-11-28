@@ -173,7 +173,7 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
 <!-- Table Title -->
 <div class="row py-3">
     <div class="col-12">
-        <div class="card rounded-10px">
+        <div class="card rounded-10px" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
             <div class="card-header bg-danger">
                 <h6 class="card-text h4 text-light">
                     Blotter
@@ -193,7 +193,7 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $blotter = $DB->query("SELECT * FROM blotter ORDER BY date_recorded DEC");
+                            <?php $blotter = $DB->query("SELECT * FROM blotter ORDER BY date_recorded ASC");
                                 foreach ($blotter as $blotters) : ?>
                                     <tr class="table-sm">
                                         <td><?=$blotters["complainant"] ?></td>

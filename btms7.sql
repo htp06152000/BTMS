@@ -55,45 +55,57 @@ CREATE TABLE blotter (
     location_of_incidence varchar(50) NOT NULL,
     foreign key (user_id) references users(user_id))ENGINE=InnoDB DEFAULT CHARSET=latin1;
     
-    
-    /*services*/
-CREATE TABLE services (
-    servicesID int(8) NOT NULL AUTO_INCREMENT,
-    services varchar(30) NOT NULL,
-    price varchar(4) NOT NULL,
-    primary key (servicesID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-    INSERT INTO 'services' ('servicesID', 'services', 'price')
-    VALUES ('1', 'Barangay Clearance', '20.00php')
-    VALUES ('2', 'Certificate of Indigency', '20.00php')
-    VALUES ('3', 'Business Permit', '20.00php')
-
-/*transaction*/
-CREATE TABLE transaction (
-    transactionID int(30) NOT NULL AUTO_INCREMENT,
+/*Barangay Clearance*/
+CREATE TABLE barangayclearance (
+    barangayclearance_ID int(30) NOT NULL AUTO_INCREMENT,
     user_id bigint(15) NOT NULL,
     residentID int(50) NOT NULL,
-    servicesID int(8) NOT NULL,
+    servicesname varchar(30) NOT NULL,
+    pickupdate date NOT NULL,
+    purpose varchar(30) NOT NULL,
+    amount float NOT NULL,
+    dateRecorded date NOT NULL,
+    status varchar(20) NOT NULL,
+    primary key (barangayclearance_ID),
+    foreign key (residentID) references resident(residentID),
+    foreign key (user_id) references users(user_id))ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    
+    
+/*Business Permit*/
+CREATE TABLE businesspermit (
+    businesspermit_ID int(30) NOT NULL AUTO_INCREMENT,
+    user_id bigint(15) NOT NULL,
+    residentID int(50) NOT NULL,
+    servicesname varchar(30) NOT NULL,
     business_name varchar(50) NULL,
     business_address varchar(100) NULL,
     type_of_business varchar(50) NULL,
-    ornumber int(30) NOT NULL,
     pickupdate date NOT NULL,
-    purpose varchar(30) NOT NULL,
+    amount float NOT NULL,
     dateRecorded date NOT NULL,
     status varchar(20) NOT NULL,
-    primary key (transactionID),
+    primary key (businesspermit_ID),
     foreign key (residentID) references resident(residentID),
-    foreign key (servicesID) references services(servicesID),
     foreign key (user_id) references users(user_id))ENGINE=InnoDB DEFAULT CHARSET=latin1;
     
-/*payment*/
-CREATE TABLE payment (
-    paymentID int(8) NOT NULL AUTO_INCREMENT,
-    amount int NOT NULL,
-    datePayment date NOT NULL,
-    transactionID int(8) NOT NULL ,
-    primary key (paymentID),
-    foreign key (transactionID) references transaction(transactionID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    
+/*Certificate of Indigency*/
+CREATE TABLE certificateindigency (
+    certificateindigency_ID int(30) NOT NULL AUTO_INCREMENT,
+    user_id bigint(15) NOT NULL,
+    residentID int(50) NOT NULL,
+    servicesname varchar(30) NOT NULL,
+    pickupdate date NOT NULL,
+    purpose varchar(30) NOT NULL,
+    amount float NOT NULL,
+    dateRecorded date NOT NULL,
+    status varchar(20) NOT NULL,
+    primary key (certificateindigency_ID),
+    foreign key (residentID) references resident(residentID),
+    foreign key (user_id) references users(user_id))ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    
+    ALTER TABLE barangayclearance AUTO_INCREMENT = 1000000001;
+    ALTER TABLE businesspermit AUTO_INCREMENT = 2000000001;
+    ALTER TABLE certificateindigency AUTO_INCREMENT = 3000000001;
     
 COMMIT;
