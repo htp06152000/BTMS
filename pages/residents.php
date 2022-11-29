@@ -248,8 +248,8 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
             <div class="form-group">
                 <label for="residentGender" class="text-muted font-weight-bold">Gender:</label>
                 <select name="residentGender" id="residentGender" class="custom-select">
-                    <option <?=$residents['residentGender']=='Male' ? 'selected' : '' ?> value="Male" >Male</option>
-                    <option <?=$residents['residentGender']=='Female' ? 'selected' : '' ?> value="Female" >Female</option>
+                    <option value="Male" >Male</option>
+                    <option value="Female" >Female</option>
                 </select>
             </div>
             <div class="form-group">
