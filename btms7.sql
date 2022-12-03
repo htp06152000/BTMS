@@ -59,7 +59,6 @@ CREATE TABLE blotter (
 CREATE TABLE barangayclearance (
     barangayclearance_ID int(30) NOT NULL AUTO_INCREMENT,
     user_id bigint(15) NOT NULL,
-    residentID int(50) NOT NULL,
     servicesname varchar(30) NOT NULL,
     pickupdate date NOT NULL,
     purpose varchar(30) NOT NULL,
@@ -67,7 +66,6 @@ CREATE TABLE barangayclearance (
     dateRecorded date NOT NULL,
     status varchar(20) NOT NULL,
     primary key (barangayclearance_ID),
-    foreign key (residentID) references resident(residentID),
     foreign key (user_id) references users(user_id))ENGINE=InnoDB DEFAULT CHARSET=latin1;
     
     

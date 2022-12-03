@@ -190,16 +190,17 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
                                 <th>Date recorded</th>
                                 <th>Status of Request</th>
                                 <th>Actions</th>
+                                <th>Generate</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $clearance = $DB->query("SELECT * FROM barangayclearance ORDER BY dateRecorded DESC");
                                 foreach ($clearance as $clearances) : ?>
                                     <tr class="table-sm">
-                                        <td><?=$clearances["complainant"] ?></td>
-                                        <td><?=$clearances["person_to_complain"] ?></td>
-                                        <td class="text-center"><?=$clearances["date_recorded"] ?></td>
-                                        <td class="font-weight-bold text-center"><?=$clearances["complaint_status"] ?></td>
+                                        <td><?=$clearances["servicesname"] ?></td>
+                                        <td class="text-center"><?=$clearances["pickupdate"] ?></td>
+                                        <td class="text-center"><?=$clearances["dateRecorded"] ?></td>
+                                        <td class="font-weight-bold text-center"><?=$clearances["status"] ?></td>
                                         <td class="text-center">
                                             <a href="<?=root_url('clearances')?>?view=<?=$clearances['barangayclearance_ID']?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i></a>
                                             <a href="<?=root_url('clearances')?>?edit=<?=$clearances['barangayclearance_ID']?>" class="btn btn-sm btn-primary">
@@ -209,6 +210,7 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
+                                        <td class="text-center"><a href="" class="btn btn-sm btn-success w-75"><i class="fi fi-rr-print"></i></a></td>
                                     </tr>
                                 <?php endforeach; ?>
                         </tbody>
@@ -218,6 +220,21 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
         </div>
     </div>
 </div>
+
+<?php 
+    $sql= "SELECT `residentLName`,`residentFName`,`residentMName` FROM `resident`";
+    try
+    {
+        $rsdnt=$DB->prepare($sql);
+        $rsdnt->execute();
+        $resultss=$rsdnt->fetchAll();
+
+    }
+    catch (PDOException $err)
+    {
+        echo($err -> getMessage());
+    }
+?>
 
 <!-- The Modal -->
 <form method="POST" class="modal" id="add-modal">
@@ -233,22 +250,63 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
         <!-- Modal body -->
         <div class="modal-body">
             <div class="form-group">
-                <label for="servicename" class="text-muted font-weight-bold">Requestor's Full name:</label>
-                <input type="text" name="servicename" id="servicename" class="form-control" maxlength="255" required />
+                <label for="servicesname" class="text-muted font-weight-bold">Requestor's Full name:</label>
+                <select name="servicesname" id="servicesname" class="form-control" placeholder="Resident Name">
+                    <option>--Full Name--</option>
+                    <?php 
+                        foreach($resultss as $resulta) :
+                    ?>
+                    <option><?php echo $resulta['residentLName'].", ".$resulta['residentFName']." ".$resulta['residentMName']; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="form-group">
                 <label for="pickupdate" class="text-muted font-weight-bold">Pick up Date:</label>
                 <input type="date" name="pickupdate" id="pickupdate" class="form-control" placeholder="mm/dd/yyyy" required />
             </div>
             <div class="form-group">
-                <label for="purpose" class="text-muted font-weight-bold">Purpose:</label>
-                <textarea type="text" class="form-control" name="purpose" id="purpose" rows="3" required></textarea>
+                <label for="status" class="text-muted font-weight-bold">Status:</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="Pending">Pending</option>
+                </select>
             </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" name="add-clearances">Proceed to payment</button>
-        </div>
+            <div class="form-group">
+                <label for="dateRecorded" class="text-muted font-weight-bold">Date Recorded:</label>
+                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control">
+                <script>
+                    var d=new Date()
+                    var yr=d.getFullYear();
+                    var month=d.getMonth()+1
+
+                    if (month<10) {
+                        month='0'+month
+                    }
+                    var date=d.getDate();
+                    if(date<10) {
+                        date='0'+date
+                    }
+
+                    var c_date=yr+"-"+month+"-"+date;
+
+                    document.getElementById('dateRecorded').value=c_date;
+
+                </script>
+            </div>
+            <div class="form-group">
+                <label for="amount" class="text-muted font-weight-bold">Amount</label>
+                <select name="amount" id="amount" class="form-control">
+                    <option value="25">25</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="purpose" class="text-muted font-weight-bold">Purpose:</label>
+                <input type="text" class="form-control" name="purpose" id="purpose" placeholder="Purpose" maxlength="255" required>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="add-clearances">Proceed to payment</button>
+            </div>
         </div>
     </div>
 </form>
