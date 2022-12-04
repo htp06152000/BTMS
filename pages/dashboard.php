@@ -24,7 +24,10 @@
         <div class="card text-white bg-success mb-3" style="max-width: 35rem; box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;">
             <div class="card-header">Barangay Clearance Requests</div>
                 <div class="card-body">
-                    <h5 class="card-title"><span class="icon"><i class="bi bi-card-heading"></i></span> Total: 5</h5>
+                <?php
+                    $nRows = $DB->query('SELECT count(*) FROM barangayclearance')->fetchColumn(); 
+                    echo '<h5 class="card-title"><span class="icon"><i class="bi bi-people"></i></span> Total: '.$nRows.'</h5>';
+                    ?>
                 </div>
             </div>
         </div>
@@ -32,7 +35,10 @@
         <div class="card text-white bg-warning mb-3" style="max-width: 35rem; box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;">
             <div class="card-header">Certificate of Indigency Requests</div>
                 <div class="card-body">
-                <h5 class="card-title"><span class="icon"><i class="bi bi-card-heading"></i></span> Total: 9</h5>
+                <?php
+                    $nRows = $DB->query('SELECT count(*) FROM certificateindigency')->fetchColumn(); 
+                    echo '<h5 class="card-title"><span class="icon"><i class="bi bi-people"></i></span> Total: '.$nRows.'</h5>';
+                    ?>
                 </div>
             </div>
         </div>
@@ -40,7 +46,10 @@
         <div class="card text-white bg-info mb-3" style="max-width: 35rem; box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;">
             <div class="card-header">Business Permit Requests</div>
                 <div class="card-body">
-                <h5 class="card-title"><span class="icon"><i class="bi bi-card-heading"></i></span> Total: 2</h5>
+                <?php
+                    $nRows = $DB->query('SELECT count(*) FROM businesspermit')->fetchColumn(); 
+                    echo '<h5 class="card-title"><span class="icon"><i class="bi bi-people"></i></span> Total: '.$nRows.'</h5>';
+                    ?>
                 </div>
             </div>
         </div>

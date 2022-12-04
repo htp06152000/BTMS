@@ -1,90 +1,62 @@
 <?php if (isset($_GET['edit']) ) : ?>
 
 <!-- Edit datas from Tables -->
-<?php $get_blotters = $DB->prepare("SELECT * FROM blotter WHERE blotterID = ? LIMIT 0, 1");
-$get_blotters->execute([ $_GET['edit'] ]);  ?>
+<?php $get_clearances = $DB->prepare("SELECT * FROM barangayclearance WHERE barangayclearance_ID = ? LIMIT 0, 1");
+$get_clearances->execute([ $_GET['edit'] ]);  ?>
 
-<?php if ($get_blotters && $get_blotters->rowCount() > 0) :
-        $blotters = $get_blotters->fetch(); ?>
+<?php if ($get_clearances && $get_clearances->rowCount() > 0) :
+        $clearances = $get_clearances->fetch(); ?>
     <form method="POST" class="row py-5">
         <div class="col-12">
-            <h2 class="h2 text-primary">Edit Blotter Report</h2>
+            <h2 class="h2 text-primary">Edit Request Details</h2>
             <hr class="hr" />
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="complainant">Complainant: <span class="text-danger">*</span> </label>
-                <input type="text" name="complainant" id="complainant" class="form-control" value="<?=$blotters['complainant']?>" maxlength="255" required />
+                <label for="servicesname">Requestor's Full Name: <span class="text-danger">*</span> </label>
+                <input type="text" name="servicesname" id="servicesname" class="form-control" value="<?=$clearances['servicesname']?>" maxlength="255" required />
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="c_address">Complainant Address:</label>
-                <input type="text" name="c_address" id="c_address" class="form-control" value="<?=$blotters['c_address']?>" maxlength="255" />
+                <label for="pickupdate">Pick up Date:</label>
+                <input type="date" name="pickupdate" id="pickupdate" class="form-control" value="<?=$clearances['pickupdate']?>" maxlength="255" />
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="c_contact">Complainant Contact#: <span class="text-danger">*</span></label>
-                <input type="text" name="c_contact" id="c_contact" class="form-control" value="<?=$blotters['c_contact']?>" maxlength="11" required />
+                <label for="dateRecorded">Date Recorded: <span class="text-danger">*</span></label>
+                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" value="<?=$clearances['dateRecorded']?>" maxlength="11" disabled/>
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="person_to_complain">Complainee: <span class="text-danger">*</span></label>
-                <input type="text" name="person_to_complain" id="person_to_complain" class="form-control" value="<?=$blotters['person_to_complain']?>" maxlength="255" required />
+                <label for="status">Status: <span class="text-danger">*</span></label>
+                <select name="status" id="status" class="custom-select">
+                    <option <?=$clearances['status']=='Pending' ? 'selected' : '' ?> value="Pending" >Pending</option>
+                    <option <?=$clearances['status']=='Processing' ? 'selected' : '' ?> value="Processing" >Processing</option>
+                    <option <?=$clearances['status']=='Ready' ? 'selected' : '' ?> value="Ready to Pick up" >Ready to Pick up</option>
+                    <option <?=$clearances['status']=='Released' ? 'selected' : '' ?> value="Released" >Released</option>
+                </select>
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="p_address">Complainee Address:</label>
-                <input type="text" name="p_address" id="p_address" class="form-control" value="<?=$blotters['p_address']?>" maxlength="255" />
+                <label for="amount">Amount:</label>
+                <input type="text" name="amount" id="amount" class="form-control" value="<?=$clearances['amount']?>" maxlength="255" disabled />
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="p_contact">Complainee Contact#:</label>
-                <input type="text" name="p_contact" id="p_contact" class="form-control" value="<?=$blotters['p_contact']?>" maxlength="11" />
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="form-group">
-                <label for="date_recorded">Date Recorded: <span class="text-danger">*</span></label>
-                <input type="date" name="date_recorded" id="date_recorded" class="form-control" placeholder="mm/dd/yyyy" value="<?=$blotters['date_recorded']?>" maxlength="10" required />
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="form-group">
-                <label for="action_taken">Action Taken: <span class="text-danger">*</span></label>
-                <input type="text" name="action_taken" id="action_taken" class="form-control" value="<?=$blotters['action_taken']?>" maxlength="100" required />
-            </div>
-        </div>        
-        <div class="col-lg-4">
-            <div class="form-group">
-                <label for="complaint_status">Status of Report:</label>
-                    <select name="complaint_status" id="complaint_status" class="custom-select">
-                        <option <?=$blotters['complaint_status']=='Pending' ? 'selected' : '' ?> value="Pending" >Pending</option>
-                        <option <?=$blotters['complaint_status']=='Solve' ? 'selected' : '' ?> value="Solve" >Solved</option>
-                    </select>
-            </div>
-        </div>        
-        <div class="col-lg-4">
-            <div class="form-group">
-                <label for="location_of_incidence">Location of Incidence: <span class="text-danger">*</span></label>
-                <input type="text" name="location_of_incidence" id="location_of_incidence" class="form-control" value="<?=$blotters['location_of_incidence']?>" maxlength="50" required />
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="form-group">
-                <label for="complaint">Complaint: <span class="text-danger">*</span></label>
-                <input type="text" name="complaint" id="complaint" class="form-control" value="<?=$blotters['complaint']?>" maxlength="100" required />
+                <label for="purpose">Purpose:</label>
+                <input type="text" name="purpose" id="purpose" class="form-control" value="<?=$clearances['purpose']?>" maxlength="11" />
             </div>
         </div>
         <div class="col-12">
             <hr class="hr" />
-            <a href="<?=root_url('blotters')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
-            <input type="hidden" name="blotterID" value="<?=$blotters['blotterID']?>" class="d-none">
-            <button type="submit" name="update-blotters" class="btn btn-primary rounded-50px px-4">Update</button>
+            <a href="<?=root_url('clearances')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
+            <input type="hidden" name="barangayclearance_ID" value="<?=$clearances['barangayclearance_ID']?>" class="d-none">
+            <button type="submit" name="update-clearances" class="btn btn-primary rounded-50px px-4">Update</button>
         </div>
     </form>
 <?php else : ?>
@@ -96,52 +68,37 @@ $get_blotters->execute([ $_GET['edit'] ]);  ?>
 <?php if (isset($_GET['view']) ) : ?>
 
 <!-- View Data from Table -->
-<?php $get_blotters = $DB->prepare("SELECT * FROM blotter WHERE blotterID = ? LIMIT 0, 1");
-$get_blotters->execute([ $_GET['view'] ]);  ?>
+<?php $get_clearances = $DB->prepare("SELECT * FROM barangayclearance WHERE barangayclearance_ID = ? LIMIT 0, 1");
+$get_clearances->execute([ $_GET['view'] ]);  ?>
 
-<?php if ($get_blotters && $get_blotters->rowCount() > 0) :
-        $blotters = $get_blotters->fetch(); ?>
+<?php if ($get_clearances && $get_clearances->rowCount() > 0) :
+        $clearances = $get_clearances->fetch(); ?>
 <form class="row py-5">
     <div class="col-12">
-        <h2 class="h2 text-primary">Blotter Report</h2>
+        <h2 class="h2 text-primary">Request Details</h2>
         <hr class="hr" />
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Complainant: <span class="font-weight-normal"><?=$blotters["complainant"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Requestor's Full name: <span class="font-weight-normal"><?=$clearances["servicesname"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Complainant Address: <span class="font-weight-normal"><?=$blotters["c_address"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Pick up Date: <span class="font-weight-normal"><?=$clearances["pickupdate"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Complainant Contact#: <span class="font-weight-normal"><?=$blotters["c_contact"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Date Recorded: <span class="font-weight-normal"><?=$clearances["dateRecorded"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Complainee: <span class="font-weight-normal"><?=$blotters["person_to_complain"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Amount: <span class="font-weight-normal"><?=$clearances["amount"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Complainee Address: <span class="font-weight-normal"><?=$blotters["p_address"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Status: <span class="font-weight-normal"><?=$clearances["status"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Complainee Contact#: <span class="font-weight-normal"><?=$blotters["p_contact"] ?></span></p>
-    </div>
-    <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Date of Incident: <span class="font-weight-normal"><?=$blotters["date_recorded"] ?></span></p>
-    </div>
-    <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Action Taken: <span class="font-weight-normal"><?=$blotters["action_taken"] ?></span></p>
-    </div>
-    <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Location of Incident: <span class="font-weight-normal"><?=$blotters["location_of_incidence"] ?></span></p>
-    </div>
-    <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Complaint Status: <span class="font-weight-normal"><?=$blotters["complaint_status"] ?></span></p>
-    </div>
-    <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Complaint: <span class="font-weight-normal"><?=$blotters["complaint"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Purpose: <span class="font-weight-normal"><?=$clearances["purpose"] ?></span></p>
     </div>
     <div class="col-12">
             <hr class="hr" />
-            <a href="<?=root_url('blotters')?>" class="btn btn-secondary text-light rounded-50px px-4">Close</a>
+            <a href="<?=root_url('clearances')?>" class="btn btn-secondary text-light rounded-50px px-4">Close</a>
             <button class="btn btn-success text-light rounded-50px px-4">Generate</button>
     </div>
 </form>
@@ -176,7 +133,7 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
         <div class="card rounded-10px" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
             <div class="card-header bg-info">
                 <h6 class="card-text h4 text-light">
-                    Requests for Business permit
+                    Requests for Business Permit
                 </h6>
             </div>
             <!-- Table Body -->
@@ -185,30 +142,32 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
                     <table class="table table-striped table-hover table-bordered">
                         <thead>
                             <tr class="table-sm text-center">
-                                <th>Complainant</th>
-                                <th>Complainee</th>
+                                <th>Requestor Name</th>
+                                <th>Pickup Date</th>
                                 <th>Date recorded</th>
-                                <th>Status of report</th>
+                                <th>Status of Request</th>
                                 <th>Actions</th>
+                                <th>Generate</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $blotter = $DB->query("SELECT * FROM blotter ORDER BY date_recorded ASC");
-                                foreach ($blotter as $blotters) : ?>
+                            <?php $clearance = $DB->query("SELECT * FROM barangayclearance ORDER BY dateRecorded DESC");
+                                foreach ($clearance as $clearances) : ?>
                                     <tr class="table-sm">
-                                        <td><?=$blotters["complainant"] ?></td>
-                                        <td><?=$blotters["person_to_complain"] ?></td>
-                                        <td class="text-center"><?=$blotters["date_recorded"] ?></td>
-                                        <td class="font-weight-bold text-center"><?=$blotters["complaint_status"] ?></td>
+                                        <td><?=$clearances["servicesname"] ?></td>
+                                        <td class="text-center"><?=$clearances["pickupdate"] ?></td>
+                                        <td class="text-center"><?=$clearances["dateRecorded"] ?></td>
+                                        <td class="font-weight-bold text-center"><?=$clearances["status"] ?></td>
                                         <td class="text-center">
-                                            <a href="<?=root_url('blotters')?>?view=<?=$blotters['blotterID']?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i></a>
-                                            <a href="<?=root_url('blotters')?>?edit=<?=$blotters['blotterID']?>" class="btn btn-sm btn-primary">
+                                            <a href="<?=root_url('clearances')?>?view=<?=$clearances['barangayclearance_ID']?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i></a>
+                                            <a href="<?=root_url('clearances')?>?edit=<?=$clearances['barangayclearance_ID']?>" class="btn btn-sm btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="#delete-items" class="btn btn-sm btn-danger" data-toggle="modal" data-itemid=<?=$blotters['blotterID']?>>
+                                            <a href="#delete-items" class="btn btn-sm btn-danger" data-toggle="modal" data-itemid=<?=$clearances['barangayclearance_ID']?>>
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
+                                        <td class="text-center"><a href="" class="btn btn-sm btn-success w-75"><i class="fi fi-rr-print"></i></a></td>
                                     </tr>
                                 <?php endforeach; ?>
                         </tbody>
@@ -219,6 +178,21 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
     </div>
 </div>
 
+<?php 
+    $sql= "SELECT `residentLName`,`residentFName`,`residentMName` FROM `resident`";
+    try
+    {
+        $rsdnt=$DB->prepare($sql);
+        $rsdnt->execute();
+        $resultss=$rsdnt->fetchAll();
+
+    }
+    catch (PDOException $err)
+    {
+        die ("Data Connection Failed" ($err -> getMessage()));
+    }
+?>
+
 <!-- The Modal -->
 <form method="POST" class="modal" id="add-modal">
     <div class="modal-dialog">
@@ -226,66 +200,71 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
 
         <!-- Modal Header -->
         <div class="modal-header bg-primary">
-            <h4 class="modal-title text-light bg-primary">Add Blotter</h4>
+            <h4 class="modal-title text-light bg-primary">Add Clearance Request</h4>
             <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body">
             <div class="form-group">
-                <label for="complainant" class="text-muted font-weight-bold">Complainant:</label>
-                <input type="text" name="complainant" id="complainant" class="form-control" maxlength="255" required />
+                <label for="servicesname" class="text-muted font-weight-bold">Requestor's Full name:</label>
+                <select name="servicesname" id="servicesname" class="form-control" placeholder="Resident Name">
+                    <option>--Full Name--</option>
+                    <?php 
+                        foreach($resultss as $resulta) :
+                    ?>
+                    <option><?php echo $resulta['residentLName'].", ".$resulta['residentFName']." ".$resulta['residentMName']; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="form-group">
-                <label for="c_address" class="text-muted font-weight-bold">Complainant Address:</label>
-                <input type="text" name="c_address" id="c_address" class="form-control" maxlength="225" required />
+                <label for="pickupdate" class="text-muted font-weight-bold">Pick up Date:</label>
+                <input type="date" name="pickupdate" id="pickupdate" class="form-control" placeholder="mm/dd/yyyy" required />
             </div>
             <div class="form-group">
-                <label for="c_contact" class="text-muted font-weight-bold">Complainant Contact#:</label>
-                <input type="text" name="c_contact" id="c_contact" class="form-control" maxlength="11" required />
+                <label for="status" class="text-muted font-weight-bold">Status:</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="Pending">Pending</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="person_to_complain" class="text-muted font-weight-bold">Complainee:</label>
-                <input type="text" name="person_to_complain" id="person_to_complain" class="form-control" maxlength="50" required />
-            </div>
-            <div class="form-group">
-                <label for="p_address" class="text-muted font-weight-bold">Complainee Address:</label>
-                <input type="text" name="p_address" id="p_address" class="form-control" maxlength="255" />
-            </div>
-            <div class="form-group">
-                <label for="p_contact" class="text-muted font-weight-bold">Complainee Contact#:</label>
-                <input type="text" name="p_contact" id="p_contact" class="form-control" maxlength="11" required />
-            </div>
-            <div class="form-group">
-                <label for="date_recorded" class="text-muted font-weight-bold">Date Recorded:</label>
-                <input type="date" name="date_recorded" id="date_recorded" placeholder="mm/dd/yyyy" class="form-control" maxlength="25" required />
-            </div>
-            <div class="form-group">
-                <label for="action_taken" class="text-muted font-weight-bold">Action Taken:</label>
-                <input type="text" name="action_taken" id="action_taken" class="form-control" maxlength="25" required />
-            </div>
-            <div class="form-group">
-                <label for="complaint_status" class="text-muted font-weight-bold">Status of Report:</label>
-                    <select name="complaint_status" id="complaint_status" class="form-control">
-                        <option value="Pending">Pending</option>
-                        <option value="Solve">Solved</option>
-                    </select>
-            </div>
-            <div class="form-group">
-                <label for="location_of_incidence" class="text-muted font-weight-bold">Location of Incidence:</label>
-                <input type="text" name="location_of_incidence" id="location_of_incidence" class="form-control" maxlength="100" required />
-            </div>
-            <div class="form-group">
-                <label for="complaint" class="text-muted font-weight-bold">Report Details:</label>
-                <input type="text" name="complaint" id="complaint" class="form-control" maxlength="100" required />
-            </div>
-        </div>
+                <label for="dateRecorded" class="text-muted font-weight-bold">Date Recorded:</label>
+                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control"/>
+                <script>
+                    var d=new Date()
+                    var yr=d.getFullYear();
+                    var month=d.getMonth()+1
 
+                    if (month<10) {
+                        month='0'+month
+                    }
+                    var date=d.getDate();
+                    if(date<10) {
+                        date='0'+date
+                    }
 
-        <!-- Modal footer -->
-        <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" name="add-blotters">Submit</button>
+                    var c_date=yr+"-"+month+"-"+date;
+
+                    document.getElementById('dateRecorded').value=c_date;
+                    
+                    endif;
+                </script>
+            </div>
+            <div class="form-group">
+                <label for="amount" class="text-muted font-weight-bold">Amount</label>
+                <select name="amount" id="amount" class="form-control">
+                    <option value="25">25</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="purpose" class="text-muted font-weight-bold">Purpose:</label>
+                <input type="text" class="form-control" name="purpose" id="purpose" placeholder="Purpose" maxlength="255" required/>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="add-clearances">Proceed to payment</button>
+            </div>
         </div>
         </div>
     </div>
@@ -296,16 +275,16 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
     <div class="modal-dialog animate__animated animate__bounceInDown">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="h5 modal-title text-primary">Delete Blotter</h5>
+                <h5 class="h5 modal-title text-primary">Delete Request</h5>
                 <button class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body text-center">
-                <div class="text-danger">Are you sure you want to delete this blotter?</div>
+                <div class="text-danger">Are you sure you want to delete this request?</div>
             </div>
             <div class="modal-footer">
                 <form method="POST">
                     <input type="hidden" name="itemid" class="d-none" value="0" />
-                    <button type="submit" name="delete-blotters" class="btn btn-primary">Confirm</button>
+                    <button type="submit" name="delete-clearances" class="btn btn-primary">Confirm</button>
                 </form>
             </div>
         </div>

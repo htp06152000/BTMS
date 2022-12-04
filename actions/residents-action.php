@@ -58,7 +58,7 @@
             $DB->beginTransaction();
             if( $update_residents->execute( [$user_id, $residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber, $residentBdate, $residentContactNumber, $residentOccupation] ) ) {
                 $DB->commit();
-                $_SESSION['message'] = "User successfully added";
+                $_SESSION['message'] = "Resident successfully added";
                 $_SESSION['messagetype'] = "success";
             } else {
                 $DB->rollback();
