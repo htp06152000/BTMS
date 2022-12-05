@@ -1,15 +1,15 @@
 <?php if ( ! defined('ACCESS') ) die("Direct access not allowed.");
 
-if ( isset($_POST['update-clearances']) ) {
+if ( isset($_POST['update-indigencies']) ) {
         
     $status = sanitize_input($_POST['status']);
-    $barangayclearance_ID = sanitize_input($_POST['barangayclearance_ID']);
+    $certificateindigency_ID = sanitize_input($_POST['certificateindigency_ID']);
 
-    $update_clearances = $DB->prepare("UPDATE barangayclearance SET  status = ? WHERE barangayclearance_ID = ?");
+    $update_indigencies = $DB->prepare("UPDATE certificateindigency SET  status = ? WHERE certificateindigency_ID = ?");
 
     try {
         $DB->beginTransaction();
-        if( $update_clearances->execute( [ $status,$barangayclearance_ID ] ) ) {
+        if( $update_indigencies->execute( [ $status,$certificateindigency_ID ] ) ) {
             $DB->commit();
             $_SESSION['message'] = "Request successfully updated";
             $_SESSION['messagetype'] = "success";
@@ -25,12 +25,12 @@ if ( isset($_POST['update-clearances']) ) {
 
     }
 
-    redirect_to('clearances');
+    redirect_to('indigencies');
 
 }
 
 
-if (isset($_POST['add-clearances'])) {
+if (isset($_POST['add-indigencies'])) {
 
     $user_id = $_SESSION["user_info"]["id"];
     $servicesname = sanitize_input($_POST['servicesname']);
@@ -40,11 +40,11 @@ if (isset($_POST['add-clearances'])) {
     $amount = sanitize_input($_POST['amount']);
     $purpose = sanitize_input($_POST['purpose']);
 
-    $update_clearances = $DB->prepare("INSERT INTO barangayclearance ( user_id, servicesname, pickupdate, status, dateRecorded, amount, purpose) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $update_indigencies = $DB->prepare("INSERT INTO certificateindigency ( user_id, servicesname, pickupdate, status, dateRecorded, amount, purpose) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
     try {
         $DB->beginTransaction();
-        if( $update_clearances->execute( [$user_id, $servicesname, $pickupdate, $status, $dateRecorded, $amount, $purpose] ) ) {
+        if( $update_indigencies->execute( [$user_id, $servicesname, $pickupdate, $status, $dateRecorded, $amount, $purpose] ) ) {
             $DB->commit();
             $_SESSION['message'] = "Request successfully submitted";
             $_SESSION['messagetype'] = "success";
@@ -61,14 +61,14 @@ if (isset($_POST['add-clearances'])) {
     }
 }
 
-if (isset($_POST['delete-clearances'])) {
-    $barangayclearance_ID  = sanitize_input( $_POST['itemid'] );
+if (isset($_POST['delete-indigencies'])) {
+    $certificateindigency_ID  = sanitize_input( $_POST['itemid'] );
 
-    $delete_clearances = $DB->prepare("DELETE FROM barangayclearance WHERE barangayclearance_ID = ?");
+    $delete_indigencies = $DB->prepare("DELETE FROM certificateindigency WHERE certificateindigency_ID = ?");
 
     try {
         $DB->beginTransaction();
-        if( $delete_clearances->execute( [ $barangayclearance_ID ] ) ) {
+        if( $delete_indigencies->execute( [ $certificateindigency_ID ] ) ) {
             $DB->commit();
             $_SESSION['message'] = "Request successfully deleted";
             $_SESSION['messagetype'] = "success";

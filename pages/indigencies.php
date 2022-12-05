@@ -1,11 +1,11 @@
 <?php if (isset($_GET['edit']) ) : ?>
 
 <!-- Edit datas from Tables -->
-<?php $get_clearances = $DB->prepare("SELECT * FROM barangayclearance WHERE barangayclearance_ID = ? LIMIT 0, 1");
-$get_clearances->execute([ $_GET['edit'] ]);  ?>
+<?php $get_indigencies = $DB->prepare("SELECT * FROM certificateindigency WHERE certificateindigency_ID = ? LIMIT 0, 1");
+$get_indigencies->execute([ $_GET['edit'] ]);  ?>
 
-<?php if ($get_clearances && $get_clearances->rowCount() > 0) :
-        $clearances = $get_clearances->fetch(); ?>
+<?php if ($get_indigencies && $get_indigencies->rowCount() > 0) :
+        $indigencies = $get_indigencies->fetch(); ?>
     <form method="POST" class="row py-5">
         <div class="col-12">
             <h2 class="h2 text-primary">Edit Request Details</h2>
@@ -14,49 +14,49 @@ $get_clearances->execute([ $_GET['edit'] ]);  ?>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="servicesname">Requestor's Full Name: <span class="text-danger">*</span> </label>
-                <input type="text" name="servicesname" id="servicesname" class="form-control" value="<?=$clearances['servicesname']?>" maxlength="255" required />
+                <input type="text" name="servicesname" id="servicesname" class="form-control" value="<?=$indigencies['servicesname']?>" maxlength="255" disabled />
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="pickupdate">Pick up Date:</label>
-                <input type="date" name="pickupdate" id="pickupdate" class="form-control" value="<?=$clearances['pickupdate']?>" maxlength="255" />
+                <input type="date" name="pickupdate" id="pickupdate" class="form-control" value="<?=$indigencies['pickupdate']?>" maxlength="255" disabled/>
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="dateRecorded">Date Recorded: <span class="text-danger">*</span></label>
-                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" value="<?=$clearances['dateRecorded']?>" maxlength="11" disabled/>
+                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" value="<?=$indigencies['dateRecorded']?>" maxlength="11" disabled/>
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="status">Status: <span class="text-danger">*</span></label>
                 <select name="status" id="status" class="custom-select">
-                    <option <?=$clearances['status']=='Pending' ? 'selected' : '' ?> value="Pending" >Pending</option>
-                    <option <?=$clearances['status']=='Processing' ? 'selected' : '' ?> value="Processing" >Processing</option>
-                    <option <?=$clearances['status']=='Ready' ? 'selected' : '' ?> value="Ready to Pick up" >Ready to Pick up</option>
-                    <option <?=$clearances['status']=='Released' ? 'selected' : '' ?> value="Released" >Released</option>
+                    <option <?=$indigencies['status']=='Pending' ? 'selected' : '' ?> value="Pending" >Pending</option>
+                    <option <?=$indigencies['status']=='Processing' ? 'selected' : '' ?> value="Processing" >Processing</option>
+                    <option <?=$indigencies['status']=='Ready' ? 'selected' : '' ?> value="Ready to Pick up" >Ready to Pick up</option>
+                    <option <?=$indigencies['status']=='Released' ? 'selected' : '' ?> value="Released" >Released</option>
                 </select>
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="amount">Amount:</label>
-                <input type="text" name="amount" id="amount" class="form-control" value="<?=$clearances['amount']?>" maxlength="255" disabled />
+                <input type="text" name="amount" id="amount" class="form-control" value="<?=$indigencies['amount']?>" maxlength="255" disabled />
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="purpose">Purpose:</label>
-                <input type="text" name="purpose" id="purpose" class="form-control" value="<?=$clearances['purpose']?>" maxlength="11" />
+                <input type="text" name="purpose" id="purpose" class="form-control" value="<?=$indigencies['purpose']?>" maxlength="11" disabled />
             </div>
         </div>
         <div class="col-12">
             <hr class="hr" />
-            <a href="<?=root_url('clearances')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
-            <input type="hidden" name="barangayclearance_ID" value="<?=$clearances['barangayclearance_ID']?>" class="d-none">
-            <button type="submit" name="update-clearances" class="btn btn-primary rounded-50px px-4">Update</button>
+            <a href="<?=root_url('indigencies')?>" class="btn btn-light text-danger rounded-50px px-4">Cancel</a>
+            <input type="hidden" name="certificateindigency_ID" value="<?=$clearances['certificateindigency_ID']?>" class="d-none">
+            <button type="submit" name="update-indigencies" class="btn btn-primary rounded-50px px-4">Update</button>
         </div>
     </form>
 <?php else : ?>
@@ -68,37 +68,37 @@ $get_clearances->execute([ $_GET['edit'] ]);  ?>
 <?php if (isset($_GET['view']) ) : ?>
 
 <!-- View Data from Table -->
-<?php $get_clearances = $DB->prepare("SELECT * FROM barangayclearance WHERE barangayclearance_ID = ? LIMIT 0, 1");
-$get_clearances->execute([ $_GET['view'] ]);  ?>
+<?php $get_indigencies = $DB->prepare("SELECT * FROM certificateindigency WHERE certificateindigency_ID = ? LIMIT 0, 1");
+$get_indigencies->execute([ $_GET['view'] ]);  ?>
 
-<?php if ($get_clearances && $get_clearances->rowCount() > 0) :
-        $clearances = $get_clearances->fetch(); ?>
+<?php if ($get_indigencies && $get_indigencies->rowCount() > 0) :
+        $indigencies = $get_indigencies->fetch(); ?>
 <form class="row py-5">
     <div class="col-12">
         <h2 class="h2 text-primary">Request Details</h2>
         <hr class="hr" />
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Requestor's Full name: <span class="font-weight-normal"><?=$clearances["servicesname"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Requestor's Full name: <span class="font-weight-normal"><?=$indigencies["servicesname"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Pick up Date: <span class="font-weight-normal"><?=$clearances["pickupdate"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Pick up Date: <span class="font-weight-normal"><?=$indigencies["pickupdate"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Date Recorded: <span class="font-weight-normal"><?=$clearances["dateRecorded"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Date Recorded: <span class="font-weight-normal"><?=$indigencies["dateRecorded"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Amount: <span class="font-weight-normal"><?=$clearances["amount"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Amount: <span class="font-weight-normal"><?=$indigencies["amount"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Status: <span class="font-weight-normal"><?=$clearances["status"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Status: <span class="font-weight-normal"><?=$indigencies["status"] ?></span></p>
     </div>
     <div class="col-lg-4">
-    <p class="fs-5 font-weight-bold">Purpose: <span class="font-weight-normal"><?=$clearances["purpose"] ?></span></p>
+    <p class="fs-5 font-weight-bold">Purpose: <span class="font-weight-normal"><?=$indigencies["purpose"] ?></span></p>
     </div>
     <div class="col-12">
             <hr class="hr" />
-            <a href="<?=root_url('clearances')?>" class="btn btn-secondary text-light rounded-50px px-4">Close</a>
+            <a href="<?=root_url('indigencies')?>" class="btn btn-secondary text-light rounded-50px px-4">Close</a>
             <button class="btn btn-success text-light rounded-50px px-4">Generate</button>
     </div>
 </form>
@@ -142,6 +142,7 @@ $get_clearances->execute([ $_GET['view'] ]);  ?>
                     <table class="table table-striped table-hover table-bordered">
                         <thead>
                             <tr class="table-sm text-center">
+                                <th>Transaction ID</th>
                                 <th>Requestor Name</th>
                                 <th>Pickup Date</th>
                                 <th>Date recorded</th>
@@ -151,19 +152,20 @@ $get_clearances->execute([ $_GET['view'] ]);  ?>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $clearance = $DB->query("SELECT * FROM barangayclearance ORDER BY dateRecorded DESC");
-                                foreach ($clearance as $clearances) : ?>
+                            <?php $indigency = $DB->query("SELECT * FROM certificateindigency ORDER BY status ASC");
+                                foreach ($indigency as $indigencies) : ?>
                                     <tr class="table-sm">
-                                        <td><?=$clearances["servicesname"] ?></td>
-                                        <td class="text-center"><?=$clearances["pickupdate"] ?></td>
-                                        <td class="text-center"><?=$clearances["dateRecorded"] ?></td>
-                                        <td class="font-weight-bold text-center"><?=$clearances["status"] ?></td>
+                                        <td class="text-center"><?=$indigencies['certificateindigency_ID']?></td>
+                                        <td><?=$indigencies["servicesname"] ?></td>
+                                        <td class="text-center"><?=$indigencies["pickupdate"] ?></td>
+                                        <td class="text-center"><?=$indigencies["dateRecorded"] ?></td>
+                                        <td class="font-weight-bold text-center"><?=$indigencies["status"] ?></td>
                                         <td class="text-center">
-                                            <a href="<?=root_url('clearances')?>?view=<?=$clearances['barangayclearance_ID']?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i></a>
-                                            <a href="<?=root_url('clearances')?>?edit=<?=$clearances['barangayclearance_ID']?>" class="btn btn-sm btn-primary">
+                                            <a href="<?=root_url('indigencies')?>?view=<?=$indigencies['certificateindigency_ID']?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i></a>
+                                            <a href="<?=root_url('indigencies')?>?edit=<?=$indigencies['certificateindigency_ID']?>" class="btn btn-sm btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="#delete-items" class="btn btn-sm btn-danger" data-toggle="modal" data-itemid=<?=$clearances['barangayclearance_ID']?>>
+                                            <a href="#delete-items" class="btn btn-sm btn-danger" data-toggle="modal" data-itemid=<?=$indigencies['certificateindigency_ID']?>>
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
@@ -263,7 +265,7 @@ $get_clearances->execute([ $_GET['view'] ]);  ?>
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" name="add-clearances">Proceed to payment</button>
+                <button type="submit" class="btn btn-primary" name="add-indigencies">Proceed to payment</button>
             </div>
         </div>
         </div>
@@ -284,7 +286,7 @@ $get_clearances->execute([ $_GET['view'] ]);  ?>
             <div class="modal-footer">
                 <form method="POST">
                     <input type="hidden" name="itemid" class="d-none" value="0" />
-                    <button type="submit" name="delete-clearances" class="btn btn-primary">Confirm</button>
+                    <button type="submit" name="delete-indigencies" class="btn btn-primary">Confirm</button>
                 </form>
             </div>
         </div>

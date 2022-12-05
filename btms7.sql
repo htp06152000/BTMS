@@ -71,9 +71,8 @@ CREATE TABLE barangayclearance (
     
 /*Business Permit*/
 CREATE TABLE businesspermit (
-    businesspermit_ID int(30) NOT NULL AUTO_INCREMENT,
+    businesspermit_ID bigint(30) NOT NULL AUTO_INCREMENT,
     user_id bigint(15) NOT NULL,
-    residentID int(50) NOT NULL,
     servicesname varchar(30) NOT NULL,
     business_name varchar(50) NULL,
     business_address varchar(100) NULL,
@@ -83,15 +82,13 @@ CREATE TABLE businesspermit (
     dateRecorded date NOT NULL,
     status varchar(20) NOT NULL,
     primary key (businesspermit_ID),
-    foreign key (residentID) references resident(residentID),
     foreign key (user_id) references users(user_id))ENGINE=InnoDB DEFAULT CHARSET=latin1;
     
     
 /*Certificate of Indigency*/
 CREATE TABLE certificateindigency (
-    certificateindigency_ID int(30) NOT NULL AUTO_INCREMENT,
+    certificateindigency_ID bigint(30) NOT NULL AUTO_INCREMENT,
     user_id bigint(15) NOT NULL,
-    residentID int(50) NOT NULL,
     servicesname varchar(30) NOT NULL,
     pickupdate date NOT NULL,
     purpose varchar(30) NOT NULL,
@@ -99,7 +96,6 @@ CREATE TABLE certificateindigency (
     dateRecorded date NOT NULL,
     status varchar(20) NOT NULL,
     primary key (certificateindigency_ID),
-    foreign key (residentID) references resident(residentID),
     foreign key (user_id) references users(user_id))ENGINE=InnoDB DEFAULT CHARSET=latin1;
     
     ALTER TABLE barangayclearance AUTO_INCREMENT = 1000000001;

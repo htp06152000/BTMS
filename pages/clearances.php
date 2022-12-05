@@ -14,13 +14,13 @@ $get_clearances->execute([ $_GET['edit'] ]);  ?>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="servicesname">Requestor's Full Name: <span class="text-danger">*</span> </label>
-                <input type="text" name="servicesname" id="servicesname" class="form-control" value="<?=$clearances['servicesname']?>" maxlength="255" required />
+                <input type="text" name="servicesname" id="servicesname" class="form-control" value="<?=$clearances['servicesname']?>" maxlength="255" disabled/>
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="pickupdate">Pick up Date:</label>
-                <input type="date" name="pickupdate" id="pickupdate" class="form-control" value="<?=$clearances['pickupdate']?>" maxlength="255" />
+                <input type="date" name="pickupdate" id="pickupdate" class="form-control" value="<?=$clearances['pickupdate']?>" maxlength="255" disabled/>
             </div>
         </div>
         <div class="col-lg-4">
@@ -49,7 +49,7 @@ $get_clearances->execute([ $_GET['edit'] ]);  ?>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="purpose">Purpose:</label>
-                <input type="text" name="purpose" id="purpose" class="form-control" value="<?=$clearances['purpose']?>" maxlength="11" />
+                <input type="text" name="purpose" id="purpose" class="form-control" value="<?=$clearances['purpose']?>" maxlength="11" disabled/>
             </div>
         </div>
         <div class="col-12">
@@ -142,6 +142,7 @@ $get_clearances->execute([ $_GET['view'] ]);  ?>
                     <table class="table table-striped table-hover table-bordered">
                         <thead>
                             <tr class="table-sm text-center">
+                                <th>Transaction ID</th>
                                 <th>Requestor Name</th>
                                 <th>Pickup Date</th>
                                 <th>Date recorded</th>
@@ -151,9 +152,10 @@ $get_clearances->execute([ $_GET['view'] ]);  ?>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $clearance = $DB->query("SELECT * FROM barangayclearance ORDER BY dateRecorded DESC");
+                            <?php $clearance = $DB->query("SELECT * FROM barangayclearance ORDER BY status ASC");
                                 foreach ($clearance as $clearances) : ?>
                                     <tr class="table-sm">
+                                        <td class="text-center"><?=$clearances['barangayclearance_ID']?></td>
                                         <td><?=$clearances["servicesname"] ?></td>
                                         <td class="text-center"><?=$clearances["pickupdate"] ?></td>
                                         <td class="text-center"><?=$clearances["dateRecorded"] ?></td>
@@ -246,8 +248,6 @@ $get_clearances->execute([ $_GET['view'] ]);  ?>
                     var c_date=yr+"-"+month+"-"+date;
 
                     document.getElementById('dateRecorded').value=c_date;
-                    
-                    endif;
                 </script>
             </div>
             <div class="form-group">
