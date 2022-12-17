@@ -22,13 +22,7 @@
             <a href="<?=root_url('blotters')?>" class="nav-link text-light pl-4 <?=($pagetitle=='blotters'?' active':'')?>"><i class="fi fi-rr-engine-warning"></i> Blotter</a>
         </li>
         <li class="nav-items w-100">
-            <a href="<?=root_url('clearances')?>" class="nav-link text-light pl-4<?=($pagetitle=='clearances'?' active':'')?>"><i class="fi fi-rr-document-signed"></i> Barangay Clearance</a>
-        </li>
-        <li class="nav-items w-100">
-            <a href="<?=root_url('indigencies')?>" class="nav-link text-light pl-4<?=($pagetitle=='indigencies'?' active':'')?>"><i class="fi fi-rr-document"></i> Certificate of Indigency</a>
-        </li>
-        <li class="nav-items w-100">
-            <a href="<?=root_url('permits')?>" class="nav-link text-light pl-4<?=($pagetitle=='permits'?' active':'')?>"><i class="fi fi-rr-file-invoice"></i> Business Permit</a>
+            <a href="<?=root_url('transactions')?>" class="nav-link text-light pl-4<?=($pagetitle=='transactions'?' active':'')?>"><i class="fi fi-rr-file-invoice"></i> Transactions</a>
         </li>
         </li>
         <li class="nav-items w-100">

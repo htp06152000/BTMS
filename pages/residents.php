@@ -213,7 +213,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
 </div>
 
 <!-- The Modal -->
-<form method="POST" class="modal" id="add-modal">
+<form method="POST" class="modal" id="add-modal" data-backdrop="static" data-keyboard="false" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
 

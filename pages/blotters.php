@@ -96,11 +96,11 @@ $get_blotters->execute([ $_GET['edit'] ]);  ?>
 <?php if (isset($_GET['view']) ) : ?>
 
 <!-- View Data from Table -->
-<?php $get_clearances = $DB->prepare("SELECT * FROM barangayclearance WHERE barangayclearance_ID = ? LIMIT 0, 1");
+<?php $get_blotters = $DB->prepare("SELECT * FROM blotter WHERE blotterID = ? LIMIT 0, 1");
 $get_blotters->execute([ $_GET['view'] ]);  ?>
 
-<?php if ($get_clearances && $get_clearances->rowCount() > 0) :
-        $clearances = $get_clearances->fetch(); ?>
+<?php if ($get_blotters && $get_blotters->rowCount() > 0) :
+        $blotters = $get_blotters->fetch(); ?>
 <form class="row py-5">
     <div class="col-12">
         <h2 class="h2 text-primary">Request Details</h2>
