@@ -130,6 +130,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                                 <th>Requestor</th>
                                 <th>Type of Document</th>
                                 <th>Pick up Date</th>
+                                <th>Date Recorded</th>
                                 <th>Status of request</th>
                                 <th>Actions</th>
                             </tr>
@@ -138,8 +139,10 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                             <?php $transaction = $DB->query("SELECT concat(rs.residentFName,' ',rs.residentMName,' ',rs.residentLName) AS requester, rq.* FROM transaction rq JOIN resident rs ON rq.residentID = rs.residentID ORDER BY dateRecorded ASC");
                                 foreach ($transaction as $transactions) : ?>
                                     <tr class="table-sm">
-                                        <td><?=$transactions["transactionID"] ?></td>
-                                        <td><?=$transactions["requester"] ?></td>
+                                        <td class="text-center"><?=$transactions["transactionID"] ?></td>
+                                        <td class="text-center"><?=$transactions["requester"] ?></td>
+                                        <td class="text-center"><?=$transactions["servicesID"] ?></td>
+                                        <td class="text-center"><?=$transactions["pickupdate"] ?></td>
                                         <td class="text-center"><?=$transactions["dateRecorded"] ?></td>
                                         <td class="font-weight-bold text-center"><?=$transactions["status"] ?></td>
                                         <td class="text-center">

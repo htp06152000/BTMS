@@ -81,7 +81,6 @@ CREATE TABLE transaction (
     business_name varchar(50) NULL,
     business_address varchar(100) NULL,
     type_of_business varchar(50) NULL,
-    ornumber int(30) NOT NULL,
     pickupdate date NOT NULL,
     purpose varchar(30) NOT NULL,
     dateRecorded date NOT NULL,
@@ -99,5 +98,7 @@ CREATE TABLE payment (
     transactionID int(8) NOT NULL ,
     primary key (paymentID),
     foreign key (transactionID) references transaction(transactionID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+    ALTER TABLE transaction AUTO_INCREMENT = 1000000001;
 
 COMMIT;
