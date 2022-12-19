@@ -47,13 +47,7 @@
                                         <td class="text-center"><?=$residents["residentGender"] ?></td>
                                         <td class="text-center"><?=$residents["residentZoneNumber"] ?></td>
                                         <td class="text-center">
-                                            <a href="<?=root_url('residents')?>?view=<?=$residents['residentID']?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i></a>
-                                            <a href="<?=root_url('residents')?>?edit=<?=$residents['residentID']?>" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </a>
-                                            <a href="#delete-items" class="btn btn-sm btn-danger" data-toggle="modal" data-itemid=<?=$residents['residentID']?>>
-                                                <i class="fas fa-trash"></i>
-                                            </a>
+                                            <a class="btn btn-sm btn-success w-100" ><i class="fi fi-rr-print"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
