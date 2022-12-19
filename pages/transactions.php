@@ -138,15 +138,16 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                         <tbody>
                             <?php $transaction = $DB->query("SELECT concat(rs.residentFName,' ',rs.residentMName,' ',rs.residentLName) AS requester, rq.* FROM transaction rq JOIN resident rs ON rq.residentID = rs.residentID ORDER BY dateRecorded ASC");
                                 foreach ($transaction as $transactions) : ?>
+                                        <?php $transactions = $DB->query("SELECT ss.services AS tod, ss.* FROM transaction rq JOIN services ss ON rq.servicesID = ss.servicesID");?>
                                     <tr class="table-sm">
                                         <td class="text-center"><?=$transactions["transactionID"] ?></td>
                                         <td class="text-center"><?=$transactions["requester"] ?></td>
-                                        <td class="text-center"><?=$transactions["servicesID"] ?></td>
+                                        <td class="text-center"><?=$transactions["tod"]?></td>
                                         <td class="text-center"><?=$transactions["pickupdate"] ?></td>
                                         <td class="text-center"><?=$transactions["dateRecorded"] ?></td>
                                         <td class="font-weight-bold text-center"><?=$transactions["status"] ?></td>
                                         <td class="text-center">
-                                            <a href="<?=root_url('transaction')?>?edit=<?=$transactions['transactionID']?>" class="btn btn-sm btn-primary">
+                                            <a href="<?=root_url('transactions')?>?edit=<?=$transactions['transactionID']?>" class="btn btn-sm btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
                                             <a href="#delete-items" class="btn btn-sm btn-danger" data-toggle="modal" data-itemid=<?=$transactions['transactionID']?>>
@@ -211,10 +212,10 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
         <!-- Modal body -->
         <div class="modal-body">
         <div class="form-group">
-                <label for="services" class="text-muted font-weight-bold">Type of Document:</label>
-                <select name="services" id="services" class="form-control">
+                <label for="tod" class="text-muted font-weight-bold">Type of Document:</label>
+                <select name="tod" id="tod" class="form-control">
                     <?php foreach($services as $service) :?>
-                    <option value="<?=$service["servicesID"]?>"><?=$service['services'];?></option>
+                    <option value="<?=$service['servicesID'];?>"><?=$service['services'];?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

@@ -186,9 +186,9 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                             <?php $resident = $DB->query("SELECT * FROM resident ORDER BY residentLName ASC");
                                 foreach ($resident as $residents) : ?>
                                     <tr class="table-sm overflow-auto">
-                                        <td><?=$residents["residentFName"] ?></td>
-                                        <td><?=$residents["residentMName"] ?></td>
-                                        <td><?=$residents["residentLName"] ?></td>
+                                        <td class="text-center"><?=$residents["residentFName"] ?></td>
+                                        <td class="text-center"><?=$residents["residentMName"] ?></td>
+                                        <td class="text-center"><?=$residents["residentLName"] ?></td>
                                         <td class="text-center"><?=$residents["residentAge"] ?></td>
                                         <td class="text-center"><?=$residents["residentCivilStatus"] ?></td>
                                         <td class="text-center"><?=$residents["residentGender"] ?></td>
@@ -243,7 +243,11 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
             </div>
             <div class="form-group">
                 <label for="residentCivilStatus" class="text-muted font-weight-bold">Civil Status:</label>
-                <input type="text" name="residentCivilStatus" id="residentCivilStatus" class="form-control" maxlength="255" />
+                <select name="residentCivilStatus" id="residentCivilStatus" class="form-control">
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="residentGender" class="text-muted font-weight-bold">Gender:</label>
@@ -254,11 +258,23 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
             </div>
             <div class="form-group">
                 <label for="residentZoneNumber" class="text-muted font-weight-bold">Zone #:</label>
-                <input type="text" name="residentZoneNumber" id="residentZoneNumber" class="form-control" maxlength="25" required />
+                <select name="residentZoneNumber" id="residentZoneNumber" class="form-control">
+                    <option value="1-A">1-A</option>
+                    <option value="1-B">1-B</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="residentBdate" class="text-muted font-weight-bold">Birthdate:</label>
-                <input type="date" name="residentBdate" id="residentBdate" placeholder="mm/dd/yyyy" class="form-control" maxlength="25" required />
+                <input type="date" name="residentBdate" id="residentBdate" placeholder="mm/dd/yyyy" class="form-control" max=<?=date('Y-m-d')?> required />
             </div>
             <div class="form-group">
                 <label for="residentContactNumber" class="text-muted font-weight-bold">Contact Number:</label>

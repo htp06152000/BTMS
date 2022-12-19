@@ -11,10 +11,10 @@ CREATE TABLE users (
     middle_name varchar(50) NOT NULL,
     last_name varchar(50) NOT NULL,
     username varchar(30) NOT NULL UNIQUE,
-    password varchar(15) NOT NULL,
+    password varchar(60) NOT NULL,
     role varchar(20) NOT NULL DEFAULT 'USER',
     email varchar(20)NOT NULL,
-    address varchar(20)NOT NULL,
+    address varchar(60)NOT NULL,
     primary key (user_id))ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     INSERT INTO `users` (`username`, `password`, `role`, `first_name`, `last_name`, `email`, `address`)
@@ -45,8 +45,6 @@ CREATE TABLE resident (
 CREATE TABLE blotter (
     blotterID int(50) primary key NOT NULL AUTO_INCREMENT,
     user_id int(15) NOT NULL,
-    residentID int(50) NOT NULL,
-    year_recorded varchar(4) NOT NULL,
     date_recorded date NOT NULL,
     complainant varchar(50) NOT NULL,
     c_address varchar(100) NOT NULL,
@@ -58,7 +56,6 @@ CREATE TABLE blotter (
     action_taken varchar(50) NOT NULL,
     complaint_status varchar(50) NOT NULL,
     location_of_incidence varchar(50) NOT NULL,
-    foreign key (residentID) references resident(residentID),
     foreign key (user_id) references users(user_id))ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 

@@ -196,8 +196,8 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
                             <?php $blotter = $DB->query("SELECT * FROM blotter ORDER BY date_recorded ASC");
                                 foreach ($blotter as $blotters) : ?>
                                     <tr class="table-sm">
-                                        <td><?=$blotters["complainant"] ?></td>
-                                        <td><?=$blotters["person_to_complain"] ?></td>
+                                        <td class="text-center"><?=$blotters["complainant"] ?></td>
+                                        <td class="text-center"><?=$blotters["person_to_complain"] ?></td>
                                         <td class="text-center"><?=$blotters["date_recorded"] ?></td>
                                         <td class="font-weight-bold text-center"><?=$blotters["complaint_status"] ?></td>
                                         <td class="text-center">
@@ -219,6 +219,10 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
     </div>
 </div>
 
+<?php 
+    $get_res = $DB->query("SELECT * FROM resident ORDER BY residentLName ASC");
+    $residents = $get_res->fetchAll();
+?>
 <!-- The Modal -->
 <form method="POST" class="modal" id="add-modal">
     <div class="modal-dialog">
@@ -234,7 +238,12 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
         <div class="modal-body">
             <div class="form-group">
                 <label for="complainant" class="text-muted font-weight-bold">Complainant:</label>
-                <input type="text" name="complainant" id="complainant" class="form-control" maxlength="255" required />
+                <select name="complainant" id="complainant" class="form-control">
+                    <option>Full Name</option>
+                    <?php foreach($residents as $resident) :?>
+                        <option value="<?=$resident['residentFName']." ".$resident['residentMName']." ".$resident['residentLName']; ?>"><?=$resident['residentLName'].", ".$resident['residentFName']." ".$resident['residentMName']; ?></option>
+                    <?php endforeach ?>
+                </select>
             </div>
             <div class="form-group">
                 <label for="c_address" class="text-muted font-weight-bold">Complainant Address:</label>
@@ -246,7 +255,12 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
             </div>
             <div class="form-group">
                 <label for="person_to_complain" class="text-muted font-weight-bold">Complainee:</label>
-                <input type="text" name="person_to_complain" id="person_to_complain" class="form-control" maxlength="50" required />
+                <select name="person_to_complain" id="person_to_complain" class="form-control">
+                    <option>Full Name</option>
+                    <?php foreach($residents as $resident) :?>
+                        <option value="<?=$resident['residentFName']." ".$resident['residentMName']." ".$resident['residentLName']; ?>"><?=$resident['residentLName'].", ".$resident['residentFName']." ".$resident['residentMName']; ?></option>
+                    <?php endforeach ?>
+                </select>
             </div>
             <div class="form-group">
                 <label for="p_address" class="text-muted font-weight-bold">Complainee Address:</label>
@@ -258,7 +272,7 @@ $get_blotters->execute([ $_GET['view'] ]);  ?>
             </div>
             <div class="form-group">
                 <label for="date_recorded" class="text-muted font-weight-bold">Date Recorded:</label>
-                <input type="date" name="date_recorded" id="date_recorded" placeholder="mm/dd/yyyy" class="form-control" maxlength="25" required />
+                <input type="date" name="date_recorded" id="date_recorded" placeholder="mm/dd/yyyy" class="form-control" max="<?=date('Y-m-d')?>" required />
             </div>
             <div class="form-group">
                 <label for="action_taken" class="text-muted font-weight-bold">Action Taken:</label>
