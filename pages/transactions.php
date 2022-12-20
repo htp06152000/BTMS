@@ -136,12 +136,11 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $transaction = $DB->query("SELECT concat(rs.residentFName,' ',rs.residentMName,' ',rs.residentLName) AS requester, rq.* FROM transaction rq JOIN resident rs ON rq.residentID = rs.residentID ORDER BY dateRecorded ASC");
-                                foreach ($transaction as $transactions) : ?>
-                                        <?php $transactions = $DB->query("SELECT ss.services AS tod, ss.* FROM transaction rq JOIN services ss ON rq.servicesID = ss.servicesID");?>
+                            <?php $transaction = $DB->query("SELECT concat(rs.residentFName,' ',rs.residentMName,' ',rs.residentLName) AS requester, tr.*, s.services AS tod FROM transaction tr JOIN resident rs ON tr.residentID = rs.residentID JOIN services s ON tr.servicesID = s.servicesID ORDER BY dateRecorded ASC");
+                                foreach ($transaction as $transactions) : ?>                      
                                     <tr class="table-sm">
-                                        <td class="text-center"><?=$transactions["transactionID"] ?></td>
-                                        <td class="text-center"><?=$transactions["requester"] ?></td>
+                                        <td class="text-center"><?=$transactions["transactionID"]?></td>
+                                        <td class="text-center"><?=$transactions["requester"]?></td>
                                         <td class="text-center"><?=$transactions["tod"]?></td>
                                         <td class="text-center"><?=$transactions["pickupdate"] ?></td>
                                         <td class="text-center"><?=$transactions["dateRecorded"] ?></td>
@@ -163,6 +162,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
         </div>
     </div>
 </div>
+
 
 <!-- The Modal -->
 <form method="POST" class="modal" id="add-modal" data-backdrop="static" data-keyboard="false" tabindex="-1">
@@ -338,4 +338,3 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
 </div>
 
 <?php endif; ?>
-

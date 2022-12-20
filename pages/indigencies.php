@@ -15,7 +15,7 @@
 <div class="row py-3">
     <div class="col-12">
         <div class="card rounded-10px" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
-            <div class="card-header bg-primary">
+            <div class="card-header bg-info">
                 <h6 class="card-text h4 text-light">
                     Certificate of Indigency
                 </h6>
