@@ -175,9 +175,9 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <button type="button" class="btn btn-info btn-md btn-block" data-toggle="modal" data-target="#add-modal-clearance">Barangay Clearance</button>
+                    <button type="button" class="btn btn-success btn-md btn-block" data-toggle="modal" data-target="#add-modal-clearance">Barangay Clearance</button>
                     <button type="button" class="btn btn-info btn-md btn-block" data-toggle="modal" data-target="#add-modal-indigency">Certificate of Indigency</button>
-                    <button type="button" class="btn btn-info btn-md btn-block" data-toggle="modal" data-target="#add-modal-permit">Business Permit</button>
+                    <button type="button" class="btn btn-primary btn-md btn-block" data-toggle="modal" data-target="#add-modal-permit">Business Permit</button>
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
@@ -261,6 +261,11 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
     </div>
 </form>
 
+<?php
+    $get_ser = $DB->query("SELECT * FROM services ORDER BY services DESC");
+    $services = $get_ser->fetchall();
+?>
+
 <!-- add modal for indigency -->
 <form method="POST" class="modal" id="add-modal-indigency">
     <div class="modal-dialog">
@@ -268,12 +273,20 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
 
         <!-- Modal Header -->
         <div class="modal-header bg-primary">
-            <h4 class="modal-title text-light bg-primary">Add Clearance Request</h4>
+            <h4 class="modal-title text-light bg-primary">Add Indigency Request</h4>
             <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body">
+        <div class="form-group">
+                <label for="tod" class="text-muted font-weight-bold">Type of Document:</label>
+                <select name="tod" id="tod" class="form-control">
+                    <?php foreach($services as $service) :?>
+                    <option value="<?=$service['servicesID'];?>"><?=$service['services'];?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="servicesname" class="text-muted font-weight-bold">Requestor's Full name:</label>
                 <select name="requester" id="requester" class="form-control">
@@ -281,6 +294,86 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                         <option value="<?=$resident["residentID"]?>"><?=$resident['residentLName'].", ".$resident['residentFName']." ".$resident['residentMName']; ?></option>
                     <?php endforeach; ?>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="pickupdate" class="text-muted font-weight-bold">Pick up Date:</label>
+                <input type="date" name="pickupdate" id="pickupdate" class="form-control" placeholder="mm/dd/yyyy" min="<?=date('Y-m-d')?>" required />
+            </div>
+            <div class="form-group">
+                <label for="status" class="text-muted font-weight-bold">Status:</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="Pending">Pending</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dateRecorded" class="text-muted font-weight-bold">Date Recorded:</label>
+                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" placeholder="mm/dd/yyyy" min="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>"/>
+            </div>
+            <div class="form-group">
+                <label for="amount" class="text-muted font-weight-bold">Amount</label>
+                <select name="amount" id="amount" class="form-control">
+                    <option value="25">25</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="purpose" class="text-muted font-weight-bold">Purpose:</label>
+                <input type="text" class="form-control" name="purpose" id="purpose" placeholder="Purpose" maxlength="255" required/>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="add-indigencies">Proceed to payment</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
+
+<?php
+    $get_ser = $DB->query("SELECT * FROM services ORDER BY price DESC");
+    $services = $get_ser->fetchall();
+?>
+
+<!-- add modal for business permit -->
+<form method="POST" class="modal" id="add-modal-permit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header bg-primary">
+            <h4 class="modal-title text-light bg-primary">Add Business Permit Request</h4>
+            <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+        <div class="form-group">
+                <label for="tod" class="text-muted font-weight-bold">Type of Document:</label>
+                <select name="tod" id="tod" class="form-control">
+                    <?php foreach($services as $service) :?>
+                    <option value="<?=$service['servicesID'];?>"><?=$service['services'];?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="requester" class="text-muted font-weight-bold">Requestor's Full name:</label>
+                <select name="requester" id="requester" class="form-control">
+                    <?php foreach($residents as $resident) :?>
+                        <option value="<?=$resident["residentID"]?>"><?=$resident['residentLName'].", ".$resident['residentFName']." ".$resident['residentMName']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="business_name" class="text-muted font-weight-bold">Business Name:</label>
+                <input type="text" name="business_name" id="business_name" class="form-control" maxlength="100" required>
+            </div>
+            <div class="form-group">
+                <label for="type_of_business" class="text-muted font-weight-bold">Business Type:</label>
+                <input type="text" name="type_of_business" id="type_of_business" class="form-control" maxlength="100" required>
+            </div>
+            <div class="form-group">
+                <label for="business_address" class="text-muted font-weight-bold">Business Address:</label>
+                <input type="text" name="business_address" id="business_address" class="form-control" maxlength="100" required>
             </div>
             <div class="form-group">
                 <label for="pickupdate" class="text-muted font-weight-bold">Pick up Date:</label>

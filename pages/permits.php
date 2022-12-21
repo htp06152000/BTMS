@@ -25,27 +25,29 @@
                     <table class="table table-hover table-striped table-bordered">
                         <thead>
                             <tr class="table-sm text-center">
-                                <th>First name</th>
-                                <th>Middle name</th>
-                                <th>Last name</th>
-                                <th>Age</th>
-                                <th>Civil Status</th>
-                                <th>Gender</th>
-                                <th>Zone#</th>
+                                <th>Transaction ID</th>
+                                <th>Requestor</th>
+                                <th>Business Type</th>
+                                <th>Business Name</th>
+                                <th>Business Address</th>
+                                <th>Pick Up Date</th>
+                                <th>Date Recorded</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $resident = $DB->query("SELECT * FROM resident ORDER BY residentLName ASC");
-                                foreach ($resident as $residents) : ?>
-                                    <tr class="table-sm overflow-auto">
-                                        <td class="text-center"><?=$residents["residentFName"] ?></td>
-                                        <td class="text-center"><?=$residents["residentMName"] ?></td>
-                                        <td class="text-center"><?=$residents["residentLName"] ?></td>
-                                        <td class="text-center"><?=$residents["residentAge"] ?></td>
-                                        <td class="text-center"><?=$residents["residentCivilStatus"] ?></td>
-                                        <td class="text-center"><?=$residents["residentGender"] ?></td>
-                                        <td class="text-center"><?=$residents["residentZoneNumber"] ?></td>
+                        <?php $transaction = $DB->query("SELECT concat(rs.residentFName,' ',rs.residentMName,' ',rs.residentLName) AS requester, tr.*, s.services AS tod FROM transaction tr JOIN resident rs ON tr.residentID = rs.residentID JOIN services s ON tr.servicesID = s.servicesID ORDER BY dateRecorded ASC");
+                                foreach ($transaction as $transactions) : ?>                      
+                                    <tr class="table-sm">
+                                        <td class="text-center"><?=$transactions["transactionID"]?></td>
+                                        <td class="text-center"><?=$transactions["requester"]?></td>
+                                        <td class="text-center"><?=$transactions["type_of_business"] ?></td>
+                                        <td class="text-center"><?=$transactions["business_name"] ?></td>
+                                        <td class="text-center"><?=$transactions["business_address"] ?></td>
+                                        <td class="text-center"><?=$transactions["pickupdate"] ?></td>
+                                        <td class="text-center"><?=$transactions["dateRecorded"] ?></td>
+                                        <td class="text-center font-weight-bold text-center"><?=$transactions["status"] ?></td>
                                         <td class="text-center">
                                             <a class="btn btn-sm btn-success w-100" ><i class="fi fi-rr-print"></i></a>
                                         </td>
