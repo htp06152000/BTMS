@@ -25,7 +25,7 @@
             <div class="card-header">Barangay Clearance Requests</div>
                 <div class="card-body">
                 <?php
-                    $nRows = $DB->query('SELECT count(*) FROM barangayclearance')->fetchColumn(); 
+                    $nRows = $DB->query('SELECT count(*) FROM transaction WHERE servicesID = 1')->fetchColumn(); 
                     echo '<h5 class="card-title"><span class="icon"><i class="bi bi-people"></i></span> Total: '.$nRows.'</h5>';
                     ?>
                 </div>
@@ -36,7 +36,7 @@
             <div class="card-header">Certificate of Indigency Requests</div>
                 <div class="card-body">
                 <?php
-                    $nRows = $DB->query('SELECT count(*) FROM certificateindigency')->fetchColumn(); 
+                    $nRows = $DB->query('SELECT count(*) FROM transaction WHERE servicesID = 2')->fetchColumn(); 
                     echo '<h5 class="card-title"><span class="icon"><i class="bi bi-people"></i></span> Total: '.$nRows.'</h5>';
                     ?>
                 </div>
@@ -47,7 +47,7 @@
             <div class="card-header">Business Permit Requests</div>
                 <div class="card-body">
                 <?php
-                    $nRows = $DB->query('SELECT count(*) FROM businesspermit')->fetchColumn(); 
+                    $nRows = $DB->query('SELECT count(*) FROM transaction WHERE servicesID = 3')->fetchColumn(); 
                     echo '<h5 class="card-title"><span class="icon"><i class="bi bi-people"></i></span> Total: '.$nRows.'</h5>';
                     ?>
                 </div>

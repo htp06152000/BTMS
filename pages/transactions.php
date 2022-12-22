@@ -239,7 +239,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
             </div>
             <div class="form-group">
                 <label for="dateRecorded" class="text-muted font-weight-bold">Date Recorded:</label>
-                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" placeholder="mm/dd/yyyy" min="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>"/>
+                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" placeholder="mm/dd/yyyy" max="<?=date('Y-m-d')?>" min="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>"/>
             </div>
             <div class="form-group">
                 <label for="amount" class="text-muted font-weight-bold">Amount</label>
@@ -307,7 +307,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
             </div>
             <div class="form-group">
                 <label for="dateRecorded" class="text-muted font-weight-bold">Date Recorded:</label>
-                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" placeholder="mm/dd/yyyy" min="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>"/>
+                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" placeholder="mm/dd/yyyy" max="<?=date('Y-m-d')?>" min="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>"/>
             </div>
             <div class="form-group">
                 <label for="amount" class="text-muted font-weight-bold">Amount</label>
@@ -387,7 +387,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
             </div>
             <div class="form-group">
                 <label for="dateRecorded" class="text-muted font-weight-bold">Date Recorded:</label>
-                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" placeholder="mm/dd/yyyy" min="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>"/>
+                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" placeholder="mm/dd/yyyy" max="<?=date('Y-m-d')?>" min="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>"/>
             </div>
             <div class="form-group">
                 <label for="amount" class="text-muted font-weight-bold">Amount</label>
@@ -402,7 +402,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" name="add-indigencies">Proceed to payment</button>
+                <button type="submit" class="btn btn-primary" name="add-permits">Proceed to payment</button>
             </div>
         </div>
         </div>

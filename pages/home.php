@@ -74,7 +74,7 @@
                                                 View the document requirements needed for Barangay Clearance
                                         </p>
                                         <div class="button">
-                                                <button href="#" class="btn btn-outline-warning btn-light my-5 text-dark w-25" data-toggle="modal" data-target="#barangayclearance">Proceed</button>
+                                                <button href="#" class="btn btn-outline-warning btn-light my-5 text-dark w-25" data-toggle="modal" data-target="#add-modal-clearance">Proceed</button>
                                         </div>
                                 </div>
                         </div>
@@ -88,7 +88,7 @@
                                                 View the document requirements needed for Certificate of Indigency
                                         </p>
                                         <div class="button">
-                                                <a href="#" class="btn btn-outline-warning btn-light my-5 text-dark w-25" data-toggle="modal" data-target="#certofindigency">Proceed</a>
+                                                <a href="#" class="btn btn-outline-warning btn-light my-5 text-dark w-25" data-toggle="modal" data-target="#add-modal-indigency">Proceed</a>
                                         </div>
                                 </div>
                         </div>
@@ -102,7 +102,7 @@
                                                 View the document requirements needed for Business permit
                                         </p>
                                         <div class="button">
-                                                <a href="#" class="btn btn-outline-warning btn-light my-5 text-dark w-25" data-toggle="modal" data-target="#businesspermit">Proceed</a>
+                                                <a href="#" class="btn btn-outline-warning btn-light my-5 text-dark w-25" data-toggle="modal" data-target="#add-modal-permit">Proceed</a>
                                         </div>
                                 </div>
                         </div>
@@ -137,99 +137,226 @@
 
 <!-- modal for services -->
 
-<div class="modal fade" id="barangayclearance" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                        <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Barangay Clearance Form</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                </button>
-                </div>
-                <form class="modal-body" method="post">
-                        <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-                                <input type="text" name="fllname" class="form-control" id="exampleFormControlInput1" placeholder="Enter full name" required>
-                        </div>
-                        <div class="mb-3">
-                                <label for="pickupdate" class="form-label">Pick up Date</label>
-                                <input type="date" class="form-control" id="timeanddate" placeholder="mm/dd/yyyy">
-                        </div>
-                <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Purpose</label>
-                        <textarea class="form-control" name="purpose" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                </form>
-                <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                </div>
-                </div>
-        </div>
-</div>
+<?php 
+    $get_res = $DB->query("SELECT * FROM resident ORDER BY residentLName ASC");
+    $residents = $get_res->fetchAll();
+?>
 
-<div class="modal fade" id="certofindigency" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                        <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Certificate of Indigency</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                </button>
-                </div>
-                <div class="modal-body">
-                        <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter full name" required>
-                        </div>
-                        <div class="mb-3">
-                                <label for="pickupdate" class="form-label">Pick up Date</label>
-                                <input type="date" class="form-control" id="timeanddate" placeholder="mm/dd/yyyy">
-                        </div>
+<?php
+    $get_ser = $DB->query("SELECT * FROM services");
+    $services = $get_ser->fetchall();
+?>
 
-                <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Purpose</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                </div>
-                <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Proceed to Payment</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                </div>
-                </div>
-        </div>
-</div>
+<!-- add modal for clearance -->
+<form method="POST" class="modal" id="add-modal-clearance">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-<div class="modal fade" id="businesspermit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                        <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Business Permit Form</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                </button>
-                </div>
-                <div class="modal-body">
-                        <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Business Type</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Business type" required>
-                        </div>
-                <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Business Name</label>
-                        <input class="form-control" id="exampleFormControlTextarea1" placeholder="Enter Business name" required></input>
-                </div>
-                <div class="mb-3">
-                                <label for="pickupdate" class="form-label">Pick up Date</label>
-                                <input type="date" class="form-control" id="timeanddate" placeholder="mm/dd/yyyy">
-                        </div>
-                </div>
-                <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                </div>
-                </div>
+        <!-- Modal Header -->
+        <div class="modal-header bg-primary">
+            <h4 class="modal-title text-light bg-primary">Add Clearance Request</h4>
+            <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
         </div>
-</div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+        <div class="form-group">
+                <label for="tod" class="text-muted font-weight-bold">Type of Document:</label>
+                <select name="tod" id="tod" class="form-control">
+                    <?php foreach($services as $service) :?>
+                    <option value="<?=$service['servicesID'];?>"><?=$service['services'];?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="requester" class="text-muted font-weight-bold">Requestor's Full name:</label>
+                <select name="requester" id="requester" class="form-control">
+                    <?php foreach($residents as $resident) :?>
+                        <option value="<?=$resident["residentID"]?>"><?=$resident['residentLName'].", ".$resident['residentFName']." ".$resident['residentMName']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pickupdate" class="text-muted font-weight-bold">Pick up Date:</label>
+                <input type="date" name="pickupdate" id="pickupdate" class="form-control" placeholder="mm/dd/yyyy" min="<?=date('Y-m-d')?>" required />
+            </div>
+            <div class="form-group">
+                <label for="status" class="text-muted font-weight-bold">Status:</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="Pending">Pending</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dateRecorded" class="text-muted font-weight-bold">Date Recorded:</label>
+                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" placeholder="mm/dd/yyyy" max="<?=date('Y-m-d')?>" min="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>"/>
+            </div>
+            <div class="form-group">
+                <label for="amount" class="text-muted font-weight-bold">Amount</label>
+                <select name="amount" id="amount" class="form-control">
+                    <option value="25">25</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="purpose" class="text-muted font-weight-bold">Purpose:</label>
+                <input type="text" class="form-control" name="purpose" id="purpose" placeholder="Purpose" maxlength="255" required/>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="add-clearances">Proceed to payment</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
+
+<?php
+    $get_ser = $DB->query("SELECT * FROM services ORDER BY services DESC");
+    $services = $get_ser->fetchall();
+?>
+
+<!-- add modal for indigency -->
+<form method="POST" class="modal" id="add-modal-indigency">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header bg-primary">
+            <h4 class="modal-title text-light bg-primary">Add Indigency Request</h4>
+            <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+        <div class="form-group">
+                <label for="tod" class="text-muted font-weight-bold">Type of Document:</label>
+                <select name="tod" id="tod" class="form-control">
+                    <?php foreach($services as $service) :?>
+                    <option value="<?=$service['servicesID'];?>"><?=$service['services'];?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="servicesname" class="text-muted font-weight-bold">Requestor's Full name:</label>
+                <select name="requester" id="requester" class="form-control">
+                    <?php foreach($residents as $resident) :?>
+                        <option value="<?=$resident["residentID"]?>"><?=$resident['residentLName'].", ".$resident['residentFName']." ".$resident['residentMName']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pickupdate" class="text-muted font-weight-bold">Pick up Date:</label>
+                <input type="date" name="pickupdate" id="pickupdate" class="form-control" placeholder="mm/dd/yyyy" min="<?=date('Y-m-d')?>" required />
+            </div>
+            <div class="form-group">
+                <label for="status" class="text-muted font-weight-bold">Status:</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="Pending">Pending</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dateRecorded" class="text-muted font-weight-bold">Date Recorded:</label>
+                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" placeholder="mm/dd/yyyy" max="<?=date('Y-m-d')?>" min="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>"/>
+            </div>
+            <div class="form-group">
+                <label for="amount" class="text-muted font-weight-bold">Amount</label>
+                <select name="amount" id="amount" class="form-control">
+                    <option value="25">25</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="purpose" class="text-muted font-weight-bold">Purpose:</label>
+                <input type="text" class="form-control" name="purpose" id="purpose" placeholder="Purpose" maxlength="255" required/>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="add-indigencies">Proceed to payment</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
+
+<?php
+    $get_ser = $DB->query("SELECT * FROM services ORDER BY price DESC");
+    $services = $get_ser->fetchall();
+?>
+
+<!-- add modal for business permit -->
+<form method="POST" class="modal" id="add-modal-permit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header bg-primary">
+            <h4 class="modal-title text-light bg-primary">Add Business Permit Request</h4>
+            <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+        <div class="form-group">
+                <label for="tod" class="text-muted font-weight-bold">Type of Document:</label>
+                <select name="tod" id="tod" class="form-control">
+                    <?php foreach($services as $service) :?>
+                    <option value="<?=$service['servicesID'];?>"><?=$service['services'];?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="requester" class="text-muted font-weight-bold">Requestor's Full name:</label>
+                <select name="requester" id="requester" class="form-control">
+                    <?php foreach($residents as $resident) :?>
+                        <option value="<?=$resident["residentID"]?>"><?=$resident['residentLName'].", ".$resident['residentFName']." ".$resident['residentMName']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="business_name" class="text-muted font-weight-bold">Business Name:</label>
+                <input type="text" name="business_name" id="business_name" class="form-control" maxlength="100" required>
+            </div>
+            <div class="form-group">
+                <label for="type_of_business" class="text-muted font-weight-bold">Business Type:</label>
+                <input type="text" name="type_of_business" id="type_of_business" class="form-control" maxlength="100" required>
+            </div>
+            <div class="form-group">
+                <label for="business_address" class="text-muted font-weight-bold">Business Address:</label>
+                <input type="text" name="business_address" id="business_address" class="form-control" maxlength="100" required>
+            </div>
+            <div class="form-group">
+                <label for="pickupdate" class="text-muted font-weight-bold">Pick up Date:</label>
+                <input type="date" name="pickupdate" id="pickupdate" class="form-control" placeholder="mm/dd/yyyy" min="<?=date('Y-m-d')?>" required />
+            </div>
+            <div class="form-group">
+                <label for="status" class="text-muted font-weight-bold">Status:</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="Pending">Pending</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dateRecorded" class="text-muted font-weight-bold">Date Recorded:</label>
+                <input type="date" name="dateRecorded" id="dateRecorded" class="form-control" placeholder="mm/dd/yyyy" max="<?=date('Y-m-d')?>" min="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>"/>
+            </div>
+            <div class="form-group">
+                <label for="amount" class="text-muted font-weight-bold">Amount</label>
+                <select name="amount" id="amount" class="form-control">
+                    <option value="25">25</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="purpose" class="text-muted font-weight-bold">Purpose:</label>
+                <input type="text" class="form-control" name="purpose" id="purpose" placeholder="Purpose" maxlength="255" required/>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="add-permits">Proceed to payment</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

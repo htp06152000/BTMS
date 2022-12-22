@@ -17,7 +17,7 @@
         <div class="card rounded-10px" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
             <div class="card-header bg-primary">
                 <h6 class="card-text h4 text-light">
-                    Certificate of Indigency
+                    Business Permit
                 </h6>
             </div>
             <div class="card-body">
@@ -37,7 +37,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php $transaction = $DB->query("SELECT concat(rs.residentFName,' ',rs.residentMName,' ',rs.residentLName) AS requester, tr.*, s.services AS tod FROM transaction tr JOIN resident rs ON tr.residentID = rs.residentID JOIN services s ON tr.servicesID = s.servicesID ORDER BY dateRecorded ASC");
+                        <?php $transaction = $DB->query("SELECT concat(rs.residentFName,' ',rs.residentMName,' ',rs.residentLName) AS requester, tr.*, s.services AS tod FROM transaction tr JOIN resident rs ON tr.residentID = rs.residentID JOIN services s ON tr.servicesID = s.servicesID WHERE s.servicesID = 3 ORDER BY dateRecorded ASC");
                                 foreach ($transaction as $transactions) : ?>                      
                                     <tr class="table-sm">
                                         <td class="text-center"><?=$transactions["transactionID"]?></td>
