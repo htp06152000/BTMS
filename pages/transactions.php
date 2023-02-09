@@ -414,11 +414,11 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
     <div class="modal-dialog animate__animated animate__bounceInDown">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="h5 modal-title text-primary">Delete Blotter</h5>
+                <h5 class="h5 modal-title text-primary">Delete Request</h5>
                 <button class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body text-center">
-                <div class="text-danger">Are you sure you want to delete this blotter?</div>
+                <div class="text-danger">Are you sure you want to delete this request?</div>
             </div>
             <div class="modal-footer">
                 <form method="POST">

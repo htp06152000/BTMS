@@ -14,8 +14,8 @@ CREATE TABLE users (
     password varchar(15) NOT NULL,
     position varchar(20) NOT NULL,
     primary key (user_ID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
- 
- 
+
+
 /*residents*/
 CREATE TABLE residents (
     residentID bigint(15) NOT NULL AUTO_INCREMENT,
@@ -35,7 +35,7 @@ CREATE TABLE residents (
     residentCitizenship varchar(20) NOT NULL,
     primary key (residentID),
     foreign key (user_ID) references users(user_ID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
-  
+
 
 /*blotter*/
 CREATE TABLE blotters (
@@ -53,15 +53,15 @@ CREATE TABLE blotters (
     complaint_status varchar(50) NOT NULL,
     location_of_incidence varchar(50) NOT NULL,
     foreign key (user_ID) references users(user_ID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
-  
-  
- /*services*/
+
+
+/*services*/
 CREATE TABLE services (
     servicesID bigint(8) NOT NULL AUTO_INCREMENT,
     services varchar(30) NOT NULL,
     price varchar(4) NOT NULL,
     primary key (servicesID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
-  
+
 /*transaction*/
 CREATE TABLE transactions (
     transactionID bigint(30) NOT NULL AUTO_INCREMENT,
@@ -79,7 +79,7 @@ CREATE TABLE transactions (
     foreign key (residentID) references residents(residentID),
     foreign key (servicesID) references services(servicesID),
     foreign key (user_ID) references users(user_ID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
-     
+
 /*payment*/
 CREATE TABLE payment (
     paymentID bigint(8) NOT NULL AUTO_INCREMENT,
@@ -88,5 +88,5 @@ CREATE TABLE payment (
     transactionID bigint(8) NOT NULL ,
     primary key (paymentID),
     foreign key (transactionID) references transactions(transactionID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
-  
+
 COMMIT;

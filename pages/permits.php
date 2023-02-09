@@ -49,7 +49,7 @@
                                         <td class="text-center"><?=$transactions["dateRecorded"] ?></td>
                                         <td class="text-center font-weight-bold text-center"><?=$transactions["status"] ?></td>
                                         <td class="text-center">
-                                            <a class="btn btn-sm btn-success w-100" ><i class="fi fi-rr-print"></i></a>
+                                            <a class="btn btn-sm btn-success w-100" ><i class="fi fi-rr-print"></i> Generate</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

@@ -47,7 +47,7 @@
                                         <td class="text-center"><?=$residents["residentGender"] ?></td>
                                         <td class="text-center"><?=$residents["residentZoneNumber"] ?></td>
                                         <td class="text-center">
-                                            <a class="btn btn-sm btn-success w-100" ><i class="fi fi-rr-print"></i></a>
+                                            <a class="btn btn-sm btn-success w-100" ><i class="fi fi-rr-print"></i> Generate</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
